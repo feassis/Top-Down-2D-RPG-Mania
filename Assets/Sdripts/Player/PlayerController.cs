@@ -5,16 +5,32 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 10f;
+    [SerializeField] private float dashSpeed = 4f;
+    [SerializeField] private float dashDuration = 0.5f;
+    [SerializeField] private float dashCooldown = 1.5f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Transform trail;
 
     private PlayerControls playerControl;
     private Vector2 movement;
+    private bool facingLeft = false;
+    private float moveSpeed;
+    private bool isDashing = false;
+    private bool isOnDashingCooldown = false;
+
+    public bool FacingLeft { get { return facingLeft; } set { facingLeft = value; } }
 
     private void Awake()
     {
         playerControl = new PlayerControls();
+        moveSpeed = speed;
+    }
+
+    private void Start()
+    {
+        playerControl.Combat.Dash.performed += _ => Dash();
     }
 
     private void OnEnable()
@@ -48,11 +64,38 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        Vector2 moveDir = movement.normalized * speed * Time.fixedDeltaTime;
+        Vector2 moveDir = movement.normalized * moveSpeed * Time.fixedDeltaTime;
         Vector3 movePosition = 
             transform.position + new Vector3(moveDir.x, moveDir.y, 0);
         rb.MovePosition(movePosition);
     }
+
+    private void Dash()
+    {
+        if (isDashing || isOnDashingCooldown)
+        {
+            return;
+        }
+
+        isDashing = true;
+        isOnDashingCooldown = true;
+        moveSpeed *= dashSpeed;
+        trail.gameObject.SetActive(true);
+
+        StartCoroutine(ResetDash());
+    }
+
+    private IEnumerator ResetDash()
+    {
+        yield return new WaitForSeconds(dashDuration);
+        moveSpeed = speed;
+        isDashing = false;
+        trail.gameObject.SetActive(false);
+        yield return new WaitForSeconds(dashCooldown - dashDuration);
+        isOnDashingCooldown = false;
+    }
+
+
 
     private void AdjustPlayerFacingDirection()
     {
@@ -61,10 +104,12 @@ public class PlayerController : MonoBehaviour
         if (playerPosOnCamera.x > mousePos.x)
         {
             spriteRenderer.flipX = true;
+            FacingLeft = true;
         }
         else
         {
             spriteRenderer.flipX = false;
+            FacingLeft = false;
         }
     }
 }
