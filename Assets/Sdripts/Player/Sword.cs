@@ -38,14 +38,13 @@ public class Sword : MonoBehaviour
 
     private void Start()
     {
-        playerControls.Combat.Attack.started += _ => StartAttacking();
-        playerControls.Combat.Attack.canceled += _ => StopAttacking();
+        playerControls.Combat.Attack.started += _ => Attack();
     }
 
     private void Update()
     {
         MouseFollowWithOffset();
-        Attack();
+        //Attack();
     }
 
     public void SwingUpFlipAnimation()
@@ -65,15 +64,11 @@ public class Sword : MonoBehaviour
 
     private void Attack()
     {
-        if (!attackButtonDown)
-        {
-            return;
-        }
-
         if (isAttacking)
         {
             return;
         }
+        isAttacking = true;
 
         animator.SetTrigger("attack");
 
@@ -82,7 +77,6 @@ public class Sword : MonoBehaviour
             slashAnim.DestrotSelf();
         }
 
-        isAttacking = true;
         weaponCollider.gameObject.SetActive(true);
 
         slashAnim = Instantiate(slashPrefab, slashAnimSpawn.position, Quaternion.identity);
