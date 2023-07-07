@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform trail;
+    [SerializeField] private Knockback knockback;
+
+    public static PlayerController Instance;
 
     private PlayerControls playerControl;
     private Vector2 movement;
@@ -24,8 +27,23 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
+        if (Instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
         playerControl = new PlayerControls();
         moveSpeed = speed;
+    }
+
+    private void OnDestroy()
+    {
+        if(Instance == this)
+        {
+            Instance = null;
+        }
     }
 
     private void Start()
@@ -62,8 +80,18 @@ public class PlayerController : MonoBehaviour
         AdjustPlayerFacingDirection();
     }
 
+    public void KnockbackPlayer(Vector3 DamageSource, float knockbackForce)
+    {
+        knockback.GetknockedBack(DamageSource, knockbackForce);
+    }
+
     private void Move()
     {
+        if (knockback.GettingKnockedBack)
+        {
+            return;
+        }
+
         Vector2 moveDir = movement.normalized * moveSpeed * Time.fixedDeltaTime;
         Vector3 movePosition = 
             transform.position + new Vector3(moveDir.x, moveDir.y, 0);

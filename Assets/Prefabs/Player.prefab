@@ -29,7 +29,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4387439960339117626}
   m_Father: {fileID: 1192192979800517643}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -103,7 +104,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 1
-  knockbackPower: 12
+  knockbackPoweronEnemy: 15
+  knockbackPowerOnPlayer: 5
+  shouldKnokbackPlayer: 1
+  knockbackSource: {fileID: 4387439960339117626}
 --- !u!1 &3242498983995732470
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,6 +292,7 @@ GameObject:
   - component: {fileID: 3897783786219598910}
   - component: {fileID: 6487847873806791114}
   - component: {fileID: 5647170353985150833}
+  - component: {fileID: 2701501048433507019}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -385,7 +390,8 @@ MonoBehaviour:
   rb: {fileID: 3897783786219598910}
   animator: {fileID: 6487847873806791114}
   spriteRenderer: {fileID: 1454704802655302791}
-  trail: {fileID: 0}
+  trail: {fileID: 6541308437431917237}
+  knockback: {fileID: 2701501048433507019}
 --- !u!50 &3897783786219598910
 Rigidbody2D:
   serializedVersion: 4
@@ -469,6 +475,20 @@ CapsuleCollider2D:
   m_Offset: {x: 0.07119889, y: -0.016184818}
   m_Size: {x: 0.45462406, y: 0.33301613}
   m_Direction: 1
+--- !u!114 &2701501048433507019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3856213818416123792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be85ef1cb5ceccb42ba5423f48edcecf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 3897783786219598910}
+  knockbackTimer: 0.3
 --- !u!1 &4660275586242203028
 GameObject:
   m_ObjectHideFlags: 0
@@ -515,6 +535,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acefcbb5fe6ad5a4c880b44a911a8b78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &4745430726702168417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4387439960339117626}
+  m_Layer: 0
+  m_Name: KnockbackSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4387439960339117626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4745430726702168417}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.68, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 200913797119497416}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5474006860902253616
 GameObject:
   m_ObjectHideFlags: 0
