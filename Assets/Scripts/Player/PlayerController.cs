@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Singleton<PlayerController>
 {
     [SerializeField] private float speed = 10f;
     [SerializeField] private float dashSpeed = 4f;
@@ -14,8 +14,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform trail;
     [SerializeField] private Knockback knockback;
 
-    public static PlayerController Instance;
-
     private PlayerControls playerControl;
     private Vector2 movement;
     private bool facingLeft = false;
@@ -25,25 +23,11 @@ public class PlayerController : MonoBehaviour
 
     public bool FacingLeft { get { return facingLeft; } set { facingLeft = value; } }
 
-    private void Awake()
+    protected override void Awake()
     {
-        if (Instance)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
-        Instance = this;
+        base.Awake();
         playerControl = new PlayerControls();
         moveSpeed = speed;
-    }
-
-    private void OnDestroy()
-    {
-        if(Instance == this)
-        {
-            Instance = null;
-        }
     }
 
     private void Start()
