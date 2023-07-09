@@ -383,6 +383,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3036ae6550751c643b99ce73a31af119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
   speed: 6
   dashSpeed: 4
   dashDuration: 0.2
