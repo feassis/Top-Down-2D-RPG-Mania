@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2066523241238580080
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 772414075630697545}
+  m_Layer: 0
+  m_Name: ChargeParticleSpawn;
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &772414075630697545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066523241238580080}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3851804105249449174}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2728599475395084938
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,8 +200,9 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: 0.90894526, w: 0.41691557}
   m_LocalPosition: {x: 0.35, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 772414075630697545}
   m_Father: {fileID: 527536960209201114}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 130.72}
@@ -276,8 +308,14 @@ MonoBehaviour:
   activeWeapon: {fileID: 1197833604260994234}
   slashAnimSpawn: {fileID: 3227794867080325859}
   slashPrefab: {fileID: 5163195510441033294, guid: b11ab37a9b7bfb3479c6ef45167973ef, type: 3}
+  chargedSlashPrefab: {fileID: 5163195510441033294, guid: 386e804b62dcee8449b88be3e3bed88d, type: 3}
   weaponCollider: {fileID: 200913797119497416}
+  chargedWeaponCollider: {fileID: 6397859172206165030}
+  chargeParticleSpawnPoint: {fileID: 772414075630697545}
+  chargingParticle: {fileID: 318149523798018267, guid: 4fc36f02cb62b3c4e90de7b390c74dc7, type: 3}
+  chargedParticle: {fileID: 764139371960515209, guid: c904d6ff95a7def4cbf48dfcf00e48f3, type: 3}
   attackCooldown: 0.5
+  chargeAttackTime: 2
 --- !u!1 &3856213818416123792
 GameObject:
   m_ObjectHideFlags: 0
@@ -316,6 +354,7 @@ Transform:
   - {fileID: 4777330390184249752}
   - {fileID: 200913797119497416}
   - {fileID: 6541308437431917237}
+  - {fileID: 6397859172206165030}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -567,6 +606,37 @@ Transform:
   m_Father: {fileID: 200913797119497416}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5228256577291420854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7467202701133513675}
+  m_Layer: 0
+  m_Name: KnockbackSource
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7467202701133513675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5228256577291420854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.68, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6397859172206165030}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5474006860902253616
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,6 +721,114 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &7425034205926373508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6397859172206165030}
+  - component: {fileID: 3300208357505869473}
+  - component: {fileID: 517525221806874941}
+  m_Layer: 0
+  m_Name: ChargedWeaponCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &6397859172206165030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7425034205926373508}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7467202701133513675}
+  m_Father: {fileID: 1192192979800517643}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!60 &3300208357505869473
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7425034205926373508}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 2.086472, y: 2.9201374}
+      - {x: 0.12966323, y: 3.1165094}
+      - {x: -0.05564308, y: 2.5050588}
+      - {x: 0.0055442452, y: 1.6032412}
+      - {x: 0.60327697, y: 0.6172662}
+      - {x: 0.51197743, y: 0.21109559}
+      - {x: 0.5910233, y: -0.10471153}
+      - {x: -0.68650585, y: -1.9180262}
+      - {x: 1.6863554, y: -2.376062}
+      - {x: 3.5484, y: -1.664067}
+      - {x: 4.2577643, y: -0.0026359558}
+      - {x: 3.7389386, y: 1.8268651}
+  m_UseDelaunayMesh: 0
+--- !u!114 &517525221806874941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7425034205926373508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f669f17f6d7e73049a6f014230da770a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageAmount: 3
+  knockbackPoweronEnemy: 15
+  knockbackPowerOnPlayer: 5
+  shouldKnokbackPlayer: 1
+  knockbackSource: {fileID: 7467202701133513675}
 --- !u!1 &8966802054788765286
 GameObject:
   m_ObjectHideFlags: 0
