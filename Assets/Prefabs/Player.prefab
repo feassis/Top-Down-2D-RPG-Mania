@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 772414075630697545}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ChargeParticleSpawn;
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,13 +42,13 @@ GameObject:
   - component: {fileID: 200913797119497416}
   - component: {fileID: 4491947983187362941}
   - component: {fileID: 7161004810902909851}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: WeaponCollider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &200913797119497416
 Transform:
   m_ObjectHideFlags: 0
@@ -139,6 +139,86 @@ MonoBehaviour:
   knockbackPowerOnPlayer: 5
   shouldKnokbackPlayer: 1
   knockbackSource: {fileID: 4387439960339117626}
+--- !u!1 &3152341841102823533
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4214020294991930773}
+  - component: {fileID: 5444976113111858687}
+  - component: {fileID: 2675386250711432656}
+  - component: {fileID: 6959118225105713368}
+  m_Layer: 6
+  m_Name: Spelltome
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4214020294991930773
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3152341841102823533}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1192192979800517643}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5444976113111858687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3152341841102823533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8dd92b6413e52b4d9ea4cce81cb270c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
+  spells:
+  - {fileID: 2675386250711432656}
+  - {fileID: 6959118225105713368}
+--- !u!114 &2675386250711432656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3152341841102823533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e350ec938d54eb4590d0c0e00d909a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpellName: Firebolt
+  SpellCoolDown: 3
+  firebolt: {fileID: 6213356530659287868, guid: 74408c1962b127e4195341506fe8eb8e, type: 3}
+--- !u!114 &6959118225105713368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3152341841102823533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80d5328c10a886c498b327511fc4272c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpellName: Lighting Sphere
+  SpellCoolDown: 5
+  lightningSphere: {fileID: 5424622775453995806, guid: bf258abf30b042c469f50a11d5bfbebf, type: 3}
 --- !u!1 &3242498983995732470
 GameObject:
   m_ObjectHideFlags: 0
@@ -148,7 +228,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3227794867080325859}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Slash Anim Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -183,7 +263,7 @@ GameObject:
   - component: {fileID: 5547089736855192862}
   - component: {fileID: 7078970366898599035}
   - component: {fileID: 7343387419234454183}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sword
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -268,7 +348,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_SortAtRoot: 0
 --- !u!95 &7078970366898599035
 Animator:
@@ -331,9 +411,9 @@ GameObject:
   - component: {fileID: 6487847873806791114}
   - component: {fileID: 5647170353985150833}
   - component: {fileID: 2701501048433507019}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -355,6 +435,7 @@ Transform:
   - {fileID: 200913797119497416}
   - {fileID: 6541308437431917237}
   - {fileID: 6397859172206165030}
+  - {fileID: 4214020294991930773}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -422,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3036ae6550751c643b99ce73a31af119, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 0
+  dontDestroyOnLoad: 1
   speed: 6
   dashSpeed: 4
   dashDuration: 0.2
@@ -539,9 +620,9 @@ GameObject:
   m_Component:
   - component: {fileID: 527536960209201114}
   - component: {fileID: 1197833604260994234}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ActiveWeapon
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -584,7 +665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4387439960339117626}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: KnockbackSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -615,7 +696,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7467202701133513675}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: KnockbackSource
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -647,9 +728,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4777330390184249752}
   - component: {fileID: 5097368767273214400}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Shadows
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -732,9 +813,9 @@ GameObject:
   - component: {fileID: 6397859172206165030}
   - component: {fileID: 3300208357505869473}
   - component: {fileID: 517525221806874941}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: ChargedWeaponCollider
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -839,9 +920,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6541308437431917237}
   - component: {fileID: 3413616781069407865}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trail
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
