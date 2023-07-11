@@ -1,4 +1,4 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +10,13 @@ public class DamageSource : MonoBehaviour
     [SerializeField] private bool shouldKnokbackPlayer;
     [SerializeField] private Transform knockbackSource;
 
+    public event EventHandler<CollisionEventHandler> OnObstacleHited;
+
+    public class CollisionEventHandler : EventArgs
+    {
+        public Collider2D Collision;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<EnemyHealth>(out EnemyHealth enemyHealth))
@@ -19,7 +26,9 @@ public class DamageSource : MonoBehaviour
                 PlayerController.Instance.KnockbackPlayer(knockbackSource.position, knockbackPowerOnPlayer);
             }
 
-            enemyHealth.TakeDamage(damageAmount, knockbackSource.position, knockbackPoweronEnemy);
+            enemyHealth.TakeDamage(damageAmount, knockbackSource.position, knockbackPoweronEnemy);          
         }
+
+        OnObstacleHited?.Invoke(this, new CollisionEventHandler { Collision = collision }) ;
     }
 }

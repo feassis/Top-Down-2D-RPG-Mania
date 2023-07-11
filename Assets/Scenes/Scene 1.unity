@@ -73865,7 +73865,7 @@ GameObject:
   - component: {fileID: 1989655818}
   m_Layer: 0
   m_Name: Camera Confiner
-  m_TagString: Untagged
+  m_TagString: CameraConfiner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74143,10 +74143,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 4650609323898858536, guid: 9dcf7b77169f6f349a440db3425ec8f2, type: 3}
-      propertyPath: dontDestroyOnLoad
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7031950586276935341, guid: 9dcf7b77169f6f349a440db3425ec8f2, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -74354,17 +74350,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3239883253284556316, guid: f0c10595b6bd81d49b1c6c5807f3665d, type: 3}
-      propertyPath: dontDestroyOnLoad
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3856213818416123792, guid: f0c10595b6bd81d49b1c6c5807f3665d, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 5547089736855192862, guid: f0c10595b6bd81d49b1c6c5807f3665d, type: 3}
-      propertyPath: m_SortingOrder
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
