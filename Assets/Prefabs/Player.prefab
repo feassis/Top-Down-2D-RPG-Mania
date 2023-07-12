@@ -506,7 +506,6 @@ MonoBehaviour:
   dontDestroyOnLoad: 1
   speed: 6
   dashDistance: 4
-  dashDuration: 0.2
   dashCooldown: 1
   rb: {fileID: 3897783786219598910}
   animator: {fileID: 6487847873806791114}
