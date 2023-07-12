@@ -505,7 +505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
   speed: 6
-  dashSpeed: 4
+  dashDistance: 4
   dashDuration: 0.2
   dashCooldown: 1
   rb: {fileID: 3897783786219598910}

@@ -5,8 +5,7 @@ using UnityEngine;
 public class PlayerController : Singleton<PlayerController>
 {
     [SerializeField] private float speed = 10f;
-    [SerializeField] private float dashSpeed = 4f;
-    [SerializeField] private float dashDuration = 0.5f;
+    [SerializeField] private float dashDistance = 4f;
     [SerializeField] private float dashCooldown = 1.5f;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
@@ -71,6 +70,17 @@ public class PlayerController : Singleton<PlayerController>
 
     private void Move()
     {
+        if (isDashing)
+        {
+            Vector2 dashMoveDir = movement.normalized * dashDistance;
+            Vector3 dashMovePosition =
+                transform.position + new Vector3(dashMoveDir.x, dashMoveDir.y, 0);
+            rb.MovePosition(dashMovePosition);
+            isDashing = false;
+            trail.gameObject.SetActive(false);
+            return;
+        }
+
         if (knockback.GettingKnockedBack)
         {
             return;
@@ -91,7 +101,7 @@ public class PlayerController : Singleton<PlayerController>
 
         isDashing = true;
         isOnDashingCooldown = true;
-        moveSpeed *= dashSpeed;
+        
         trail.gameObject.SetActive(true);
 
         StartCoroutine(ResetDash());
@@ -99,11 +109,7 @@ public class PlayerController : Singleton<PlayerController>
 
     private IEnumerator ResetDash()
     {
-        yield return new WaitForSeconds(dashDuration);
-        moveSpeed = speed;
-        isDashing = false;
-        trail.gameObject.SetActive(false);
-        yield return new WaitForSeconds(dashCooldown - dashDuration);
+        yield return new WaitForSeconds(dashCooldown);
         isOnDashingCooldown = false;
     }
 
