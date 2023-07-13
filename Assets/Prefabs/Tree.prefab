@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3692643225007272311}
   - component: {fileID: 3167391904775651647}
   - component: {fileID: 5707877205296103235}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4272109368201359474
 SpriteRenderer:
@@ -172,3 +172,4 @@ MonoBehaviour:
   transparencyAmount: 0.8
   fadeTime: 0.4
   spriteRenderer: {fileID: 4272109368201359474}
+  tilemap: {fileID: 0}

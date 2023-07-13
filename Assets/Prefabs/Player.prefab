@@ -135,10 +135,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 1
-  knockbackPoweronEnemy: 15
-  knockbackPowerOnPlayer: 5
-  shouldKnokbackPlayer: 1
+  knockbackPowerOnTarget: 15
+  knockbackPowerOnSelf: 15
+  shouldKnokbackSelf: 0
   knockbackSource: {fileID: 4387439960339117626}
+  isPlayer: 1
 --- !u!1 &3152341841102823533
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +412,8 @@ GameObject:
   - component: {fileID: 6487847873806791114}
   - component: {fileID: 5647170353985150833}
   - component: {fileID: 2701501048433507019}
+  - component: {fileID: 3369099481561031725}
+  - component: {fileID: 1626715878744401635}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -609,6 +612,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 3897783786219598910}
   knockbackTimer: 0.3
+--- !u!114 &3369099481561031725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3856213818416123792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83991f63f874f0d4c96506d4c8f93ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 10
+  knockback: {fileID: 2701501048433507019}
+  flash: {fileID: 1626715878744401635}
+--- !u!114 &1626715878744401635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3856213818416123792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96aa97c69f2be49479eedc99b7bdd8bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whiteFlashMat: {fileID: 2100000, guid: 5f8fb0fb5abd86c43a4f5622c7ae7954, type: 2}
+  restoreDefautMatTime: 0.2
+  spriteRenderer: {fileID: 1454704802655302791}
 --- !u!1 &4660275586242203028
 GameObject:
   m_ObjectHideFlags: 0
@@ -905,10 +938,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageAmount: 3
-  knockbackPoweronEnemy: 15
-  knockbackPowerOnPlayer: 5
-  shouldKnokbackPlayer: 1
+  knockbackPowerOnTarget: 15
+  knockbackPowerOnSelf: 15
+  shouldKnokbackSelf: 0
   knockbackSource: {fileID: 7467202701133513675}
+  isPlayer: 1
 --- !u!1 &8966802054788765286
 GameObject:
   m_ObjectHideFlags: 0
