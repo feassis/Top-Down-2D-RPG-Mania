@@ -16,13 +16,22 @@ public class Projectile : DamageSource
 
     private void DestroySelf(object sender, CollisionEventHandler e)
     {
-        if(e.Collision.gameObject.tag == "Player" 
-            || e.Collision.gameObject.tag == "CameraConfiner")
+        if(SameTeam(e) || e.Collision.gameObject.tag == "CameraConfiner")
         {
             return;
         }
 
         Destroy(gameObject);
+    }
+
+    private bool SameTeam(CollisionEventHandler e)
+    {
+        if (isPlayer)
+        {
+            return e.Collision.gameObject.tag == "Player";
+        }
+
+        return e.Collision.gameObject.tag == "Enemy";
     }
 
     private void FixedUpdate()
