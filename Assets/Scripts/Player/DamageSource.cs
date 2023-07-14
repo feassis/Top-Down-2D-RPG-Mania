@@ -9,7 +9,7 @@ public class DamageSource : MonoBehaviour
     [SerializeField] private float knockbackPowerOnSelf = 15f;
     [SerializeField] private bool shouldKnokbackSelf;
     [SerializeField] private Transform knockbackSource;
-    [SerializeField] private bool isPlayer = true;
+    [SerializeField] protected bool isPlayer = true;
 
     public event EventHandler<CollisionEventHandler> OnObstacleHited;
 

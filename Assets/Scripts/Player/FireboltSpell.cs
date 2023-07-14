@@ -16,7 +16,7 @@ public class FireboltSpell : Spell
         var direction = position - playerPositionOnScreen;
 
         Projectile projectile = 
-            Instantiate(firebolt, playerPos, Quaternion.identity);
+            Instantiate(firebolt, position, Quaternion.identity);
 
         projectile.ShootDirection = direction.normalized;
     }
