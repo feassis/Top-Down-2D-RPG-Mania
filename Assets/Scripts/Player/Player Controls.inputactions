@@ -103,15 +103,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "ChangeSpell",
-                    "type": "Button",
-                    "id": "366b9e6e-2905-4ba8-8dc7-eaef93569b8c",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -145,17 +136,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "CastSpell",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "5dcde20f-5e9a-4a36-b122-f73c50730775",
-                    "path": "<Keyboard>/tab",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ChangeSpell",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

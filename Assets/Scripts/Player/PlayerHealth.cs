@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : Singleton<PlayerHealth>
 {
     [SerializeField] private float maxHP = 10;
     [SerializeField] private Knockback knockback;
@@ -10,8 +10,9 @@ public class PlayerHealth : MonoBehaviour
 
     private float currentHP;
 
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         currentHP = maxHP;
     }
 
@@ -21,6 +22,11 @@ public class PlayerHealth : MonoBehaviour
         knockback.GetknockedBack(damageSource, knockbackPower);
 
         StartCoroutine(CheckDeathRoutine());
+    }
+
+    public void Heal(float amount)
+    {
+        currentHP = Mathf.Clamp(currentHP + amount, 0, maxHP);
     }
 
     private IEnumerator CheckDeathRoutine()

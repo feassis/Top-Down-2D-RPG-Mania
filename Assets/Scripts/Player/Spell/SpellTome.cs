@@ -45,7 +45,6 @@ public class SpellTome : Singleton<SpellTome>
 
         playerControl = new PlayerControls();
         playerControl.Combat.CastSpell.performed += CastSelectedSpell;
-        playerControl.Combat.ChangeSpell.performed += IncrementSpellIndex;
 
         foreach (var spell in spells)
         {
@@ -62,13 +61,18 @@ public class SpellTome : Singleton<SpellTome>
         playerControl.Disable();
     }
 
-    private void IncrementSpellIndex(InputAction.CallbackContext obj)
+    private void IncrementSpellIndex(Vector2 scroll)
     {
-        currentSpellIndex++;
+        currentSpellIndex = currentSpellIndex + Mathf.RoundToInt(scroll.y);
 
         if(currentSpellIndex >= spells.Count)
         {
             currentSpellIndex = 0;
+        }
+
+        if(currentSpellIndex < 0)
+        {
+            currentSpellIndex = spells.Count - 1;
         }
 
         OnSpellChange?.Invoke(this, EventArgs.Empty);
@@ -81,6 +85,13 @@ public class SpellTome : Singleton<SpellTome>
 
     private void Update()
     {
+        Vector2 scroll = Mouse.current.scroll.ReadValue().normalized;
+
+        if (scroll != Vector2.zero)
+        {
+            IncrementSpellIndex(scroll);
+        }  
+
         float reduction = Time.deltaTime;
         foreach (var spell in avaliableSpells)
         {

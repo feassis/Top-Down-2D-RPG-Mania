@@ -125,15 +125,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChangeSpell"",
-                    ""type"": ""Button"",
-                    ""id"": ""366b9e6e-2905-4ba8-8dc7-eaef93569b8c"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -169,17 +160,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""action"": ""CastSpell"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5dcde20f-5e9a-4a36-b122-f73c50730775"",
-                    ""path"": ""<Keyboard>/tab"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeSpell"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -194,7 +174,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Combat_Attack = m_Combat.FindAction("Attack", throwIfNotFound: true);
         m_Combat_Dash = m_Combat.FindAction("Dash", throwIfNotFound: true);
         m_Combat_CastSpell = m_Combat.FindAction("CastSpell", throwIfNotFound: true);
-        m_Combat_ChangeSpell = m_Combat.FindAction("ChangeSpell", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -305,7 +284,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Combat_Attack;
     private readonly InputAction m_Combat_Dash;
     private readonly InputAction m_Combat_CastSpell;
-    private readonly InputAction m_Combat_ChangeSpell;
     public struct CombatActions
     {
         private @PlayerControls m_Wrapper;
@@ -313,7 +291,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_Combat_Attack;
         public InputAction @Dash => m_Wrapper.m_Combat_Dash;
         public InputAction @CastSpell => m_Wrapper.m_Combat_CastSpell;
-        public InputAction @ChangeSpell => m_Wrapper.m_Combat_ChangeSpell;
         public InputActionMap Get() { return m_Wrapper.m_Combat; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -332,9 +309,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @CastSpell.started += instance.OnCastSpell;
             @CastSpell.performed += instance.OnCastSpell;
             @CastSpell.canceled += instance.OnCastSpell;
-            @ChangeSpell.started += instance.OnChangeSpell;
-            @ChangeSpell.performed += instance.OnChangeSpell;
-            @ChangeSpell.canceled += instance.OnChangeSpell;
         }
 
         private void UnregisterCallbacks(ICombatActions instance)
@@ -348,9 +322,6 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @CastSpell.started -= instance.OnCastSpell;
             @CastSpell.performed -= instance.OnCastSpell;
             @CastSpell.canceled -= instance.OnCastSpell;
-            @ChangeSpell.started -= instance.OnChangeSpell;
-            @ChangeSpell.performed -= instance.OnChangeSpell;
-            @ChangeSpell.canceled -= instance.OnChangeSpell;
         }
 
         public void RemoveCallbacks(ICombatActions instance)
@@ -377,6 +348,5 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
         void OnCastSpell(InputAction.CallbackContext context);
-        void OnChangeSpell(InputAction.CallbackContext context);
     }
 }
