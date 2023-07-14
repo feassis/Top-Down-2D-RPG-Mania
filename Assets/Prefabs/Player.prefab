@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 5444976113111858687}
   - component: {fileID: 2675386250711432656}
   - component: {fileID: 6959118225105713368}
+  - component: {fileID: 5984463525881257693}
   m_Layer: 6
   m_Name: Spelltome
   m_TagString: Player
@@ -190,6 +191,7 @@ MonoBehaviour:
   spells:
   - {fileID: 2675386250711432656}
   - {fileID: 6959118225105713368}
+  - {fileID: 5984463525881257693}
 --- !u!114 &2675386250711432656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +222,22 @@ MonoBehaviour:
   SpellName: Lighting Sphere
   SpellCoolDown: 5
   lightningSphere: {fileID: 5424622775453995806, guid: bf258abf30b042c469f50a11d5bfbebf, type: 3}
+--- !u!114 &5984463525881257693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3152341841102823533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11580f0a976365a45bf38bec292ba61b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpellName: Heal
+  SpellCoolDown: 10
+  healAmount: 7
+  healParticles: {fileID: 2131835069339609861, guid: a75fa17bd945e14459e1de187dca121f, type: 3}
 --- !u!1 &3242498983995732470
 GameObject:
   m_ObjectHideFlags: 0
@@ -624,6 +642,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83991f63f874f0d4c96506d4c8f93ed2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
   maxHP: 10
   knockback: {fileID: 2701501048433507019}
   flash: {fileID: 1626715878744401635}
