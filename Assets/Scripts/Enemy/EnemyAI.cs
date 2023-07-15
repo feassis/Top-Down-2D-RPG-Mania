@@ -15,8 +15,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private AttackType attackType;
     [SerializeField] private bool drawGizmo = true;
     [SerializeField] private Knockback knockback;
-    [SerializeField] private Projectile projectile;
-    [SerializeField] private float attackCooldown;
+    [SerializeField] private EnemyAiAttackPattern enemyAIAttackPattern;
 
     private Transform target;
     private State state;
@@ -24,7 +23,6 @@ public class EnemyAI : MonoBehaviour
     private bool isAttackRange;
     private IEnumerator roamingRoutine;
     private State previousState;
-    private bool isAttackOnCooldown;
 
     private enum AttackType
     {
@@ -123,28 +121,21 @@ public class EnemyAI : MonoBehaviour
             case State.Roaming:
                 aiPath.enabled = false;
                 aiDestinationSetter.enabled = false;
+                enemyPathfinding.enabled = true;
                 roamingRoutine = RoamingRoutine();
                 StartCoroutine(roamingRoutine);
                 break;
             case State.Chasing:
                 StopCoroutine(roamingRoutine);
+                enemyPathfinding.enabled = false;
                 aiPath.enabled = true;
                 aiDestinationSetter.enabled = true;
                 break;
             case State.Attacking:
-                if (attackType == AttackType.GetCloser)
-                {
-                    StopCoroutine(roamingRoutine);
-                    aiPath.enabled = true;
-                    aiDestinationSetter.enabled = true;
-                }
-                else if (attackType == AttackType.RangeAttack)
-                {
-                    if (!isAttackOnCooldown)
-                    {
-                        ShootProjectile();
-                    }  
-                }
+                StopCoroutine(roamingRoutine);
+                enemyPathfinding.enabled = false;
+
+                enemyAIAttackPattern.AttackBehaviour();
 
                 break;
             case State.KnockBack:
@@ -155,30 +146,6 @@ public class EnemyAI : MonoBehaviour
             default:
                 break;
         }
-    }
-
-    private void ShootProjectile()
-    {
-        aiPath.enabled = false;
-        aiDestinationSetter.enabled = false;
-        isAttackOnCooldown = true;
-        Vector3 position = transform.position;
-        var playerPos = PlayerController.Instance.transform.position;
-
-        var direction = playerPos - position;
-
-        Projectile projectileInstance =
-            Instantiate(projectile, position, Quaternion.identity);
-
-        projectileInstance.ShootDirection = direction.normalized;
-
-        StartCoroutine(ResetAttack());
-    }
-
-    private IEnumerator ResetAttack()
-    {
-        yield return new WaitForSeconds(attackCooldown);
-        isAttackOnCooldown = false;
     }
 
     private Vector2 GetRoamingDirection()
