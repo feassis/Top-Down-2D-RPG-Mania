@@ -16,6 +16,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private bool drawGizmo = true;
     [SerializeField] private Knockback knockback;
     [SerializeField] private EnemyAiAttackPattern enemyAIAttackPattern;
+    [SerializeField] private EnemyHPBar hpBar;
 
     private Transform target;
     private State state;
@@ -46,6 +47,7 @@ public class EnemyAI : MonoBehaviour
 
     private void Start()
     {
+        hpBar.gameObject.SetActive(true);
         roamingRoutine = RoamingRoutine();
         StartCoroutine(roamingRoutine);
         aiDestinationSetter.target = PlayerController.Instance.transform;
@@ -77,6 +79,11 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        if(state == State.Roaming)
+        {
+            hpBar.gameObject.SetActive(false);
+        }
+
         if (knockback.GettingKnockedBack)
         {
             return;
@@ -87,17 +94,20 @@ public class EnemyAI : MonoBehaviour
 
         if (isAttackRange)
         {
+            hpBar.gameObject.SetActive(true);
             GoToState(State.Attacking);
             return;
         }
         if (isChaseRange)
         {
+            hpBar.gameObject.SetActive(true);
             GoToState(State.Chasing);
             return;
         }
 
         if(state != State.Roaming)
         {
+            hpBar.gameObject.SetActive(false);
             GoToState(State.Roaming);
         }
     }

@@ -270,6 +270,7 @@ MonoBehaviour:
   drawGizmo: 1
   knockback: {fileID: 2975460189748527099}
   enemyAIAttackPattern: {fileID: 7331059435732946840}
+  hpBar: {fileID: 5946545673463614462}
 --- !u!114 &8670066561516226146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603,3 +604,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6914815762661165145, guid: eda9085263f52874a9f6fdd88ccef49c, type: 3}
   m_PrefabInstance: {fileID: 4829781978306279180}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5946545673463614462 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1261160547876355314, guid: eda9085263f52874a9f6fdd88ccef49c, type: 3}
+  m_PrefabInstance: {fileID: 4829781978306279180}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d39d04b1ce31ff2489348dc87392c528, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
