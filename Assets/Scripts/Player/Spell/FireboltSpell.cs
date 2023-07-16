@@ -5,6 +5,7 @@ using UnityEngine;
 public class FireboltSpell : Spell
 {
     [SerializeField] private Projectile firebolt;
+    [SerializeField] private float instantiationDistance = 1f;
 
     public override void CastSpell()
     {
@@ -16,7 +17,7 @@ public class FireboltSpell : Spell
         var direction = position - playerPositionOnScreen;
 
         Projectile projectile = 
-            Instantiate(firebolt, position, Quaternion.identity);
+            Instantiate(firebolt, playerPos + direction.normalized * instantiationDistance, Quaternion.identity);
 
         projectile.ShootDirection = direction.normalized;
     }

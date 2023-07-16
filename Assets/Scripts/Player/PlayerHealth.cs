@@ -1,12 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : Singleton<PlayerHealth>
+public class PlayerHealth : Singleton<PlayerHealth>, IDamagable
 {
     [SerializeField] private float maxHP = 10;
     [SerializeField] private Knockback knockback;
     [SerializeField] private Flash flash;
+
+    private Action OnHPChange;
 
     private float currentHP;
 
@@ -20,6 +23,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     {
         currentHP = Mathf.Clamp(currentHP - dmg, 0, maxHP);
         knockback.GetknockedBack(damageSource, knockbackPower);
+        OnHPChange?.Invoke();
 
         StartCoroutine(CheckDeathRoutine());
     }
@@ -27,6 +31,7 @@ public class PlayerHealth : Singleton<PlayerHealth>
     public void Heal(float amount)
     {
         currentHP = Mathf.Clamp(currentHP + amount, 0, maxHP);
+        OnHPChange?.Invoke();
     }
 
     private IEnumerator CheckDeathRoutine()
@@ -42,5 +47,20 @@ public class PlayerHealth : Singleton<PlayerHealth>
     private void Death()
     {
         
+    }
+
+    public (float currentHP, float maxHP) GetHPInfo()
+    {
+        return (currentHP, maxHP);
+    }
+
+    public void SubscribeToHPChange(Action onHPChangeAction)
+    {
+        OnHPChange += onHPChangeAction;
+    }
+
+    public void UnsubscribeToHPChange(Action onHPChangeAction)
+    {
+        OnHPChange -= onHPChangeAction;
     }
 }
