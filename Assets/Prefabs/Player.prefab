@@ -207,6 +207,7 @@ MonoBehaviour:
   SpellName: Firebolt
   SpellCoolDown: 3
   firebolt: {fileID: 6213356530659287868, guid: 74408c1962b127e4195341506fe8eb8e, type: 3}
+  instantiationDistance: 1
 --- !u!114 &6959118225105713368
 MonoBehaviour:
   m_ObjectHideFlags: 0
