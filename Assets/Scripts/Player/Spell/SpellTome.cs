@@ -7,12 +7,54 @@ using UnityEngine.InputSystem;
 public class SpellTome : Singleton<SpellTome>
 {
     [SerializeField] private List<Spell> spells;
+    [SerializeField] private int baseSpellLevel = 0;
 
+    private List<SpellPowerUp> powerUps = new List<SpellPowerUp>();
     private PlayerControls playerControl;
     private int currentSpellIndex = 0;
     private List<AvaliableSpells> avaliableSpells = new List<AvaliableSpells>();
 
     public event EventHandler OnSpellChange;
+    public event EventHandler<EventHandlerPowerUP> OnPowerUpRemoved;
+    public event EventHandler<EventHandlerPowerUP> OnPowerUpAdded;
+
+    public class EventHandlerPowerUP : EventArgs
+    {
+        public SpellType SpellType;
+        public float Timer;
+    }
+
+    private class SpellPowerUp
+    {
+        public SpellType Spell;
+        public int LevelUp;
+        public float Timer;
+
+        public SpellPowerUp(SpellType spellType, int level, float timer)
+        {
+            Spell = spellType;
+            LevelUp = level;
+            Timer = timer;
+        }
+    }
+
+    public float GetSpellPowerUpTimer(SpellType spell)
+    {
+        var powerUp = powerUps.Find(p => p.Spell == spell);
+        return powerUp.Timer;
+    }
+
+    private int GetSpellLevel(SpellType spell)
+    {
+        var powerUp = powerUps.Find(p => p.Spell == spell);
+
+        if(powerUp != null)
+        {
+            return baseSpellLevel + powerUp.LevelUp;
+        }
+
+        return baseSpellLevel;
+    }
 
     private class AvaliableSpells
     {
@@ -24,15 +66,15 @@ public class SpellTome : Singleton<SpellTome>
             Spell = spell;
         }
 
-        public void CastSpell()
+        public void CastSpell(int level)
         {
             if(Timer > 0)
             {
                 return;
             }
-
-            Spell.CastSpell();
-            Timer = Spell.SpellCoolDown;
+            
+            Spell.CastSpell(level);
+            Timer = Spell.GetCoolDownTine(level);
         }
 
         public string GetSpellName() => Spell.SpellName;
@@ -80,7 +122,8 @@ public class SpellTome : Singleton<SpellTome>
 
     private void CastSelectedSpell(InputAction.CallbackContext obj)
     {
-        avaliableSpells[currentSpellIndex].CastSpell();
+        int level = GetSpellLevel(avaliableSpells[currentSpellIndex].Spell.SpellType);
+        avaliableSpells[currentSpellIndex].CastSpell(level);
     }
 
     private void Update()
@@ -97,6 +140,24 @@ public class SpellTome : Singleton<SpellTome>
         {
             spell.Timer = Mathf.Clamp(spell.Timer - reduction, 0, Mathf.Infinity);
         }
+
+        List<SpellPowerUp> powerUpsToBeRemoved = new List<SpellPowerUp>();
+
+        foreach (SpellPowerUp powerUp in powerUps)
+        {
+            powerUp.Timer = Mathf.Clamp(powerUp.Timer - reduction, 0, Mathf.Infinity);
+
+            if(powerUp.Timer <= 0)
+            {
+                powerUpsToBeRemoved.Add(powerUp);
+            }
+        }
+
+        foreach (var item in powerUpsToBeRemoved)
+        {
+            powerUps.Remove(item);
+            OnPowerUpRemoved?.Invoke(this, new EventHandlerPowerUP { SpellType = item.Spell });
+        }
     }
 
     public string GetSelectedSpellName() => 
@@ -104,4 +165,21 @@ public class SpellTome : Singleton<SpellTome>
 
     public float GetSelectedSpellTimer() => 
         avaliableSpells[currentSpellIndex].GetTimer();
+
+    public void AddPowerUp(SpellType spellType, int level, float powerDuration)
+    {
+        var powerUp = powerUps.Find(p => p.Spell == spellType);
+
+        if(powerUp != null)
+        {
+            powerUp.LevelUp = Mathf.Max(powerUp.LevelUp, level);
+            powerUp.Timer = Mathf.Max(powerUp.Timer, powerDuration);
+        }
+        else
+        {
+            powerUps.Add(new SpellPowerUp(spellType, level, powerDuration));
+        }
+
+        OnPowerUpAdded?.Invoke(this, new EventHandlerPowerUP { SpellType = spellType, Timer = powerDuration });
+    }
 }
