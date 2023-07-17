@@ -192,6 +192,7 @@ MonoBehaviour:
   - {fileID: 2675386250711432656}
   - {fileID: 6959118225105713368}
   - {fileID: 5984463525881257693}
+  baseSpellLevel: 0
 --- !u!114 &2675386250711432656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,10 +205,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e350ec938d54eb4590d0c0e00d909a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpellType: 0
   SpellName: Firebolt
-  SpellCoolDown: 3
   firebolt: {fileID: 6213356530659287868, guid: 74408c1962b127e4195341506fe8eb8e, type: 3}
   instantiationDistance: 1
+  spellLevels:
+  - ProjectileAmount: 1
+    TimeBetween: 0.5
+    SpellCoolDown: 3
+  - ProjectileAmount: 3
+    TimeBetween: 0.5
+    SpellCoolDown: 1
 --- !u!114 &6959118225105713368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,9 +228,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80d5328c10a886c498b327511fc4272c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpellType: 2
   SpellName: Lighting Sphere
-  SpellCoolDown: 5
   lightningSphere: {fileID: 5424622775453995806, guid: bf258abf30b042c469f50a11d5bfbebf, type: 3}
+  spellLevels:
+  - SpellCoolDown: 5
+    Radius: 3.1
+  - SpellCoolDown: 5
+    Radius: 6
 --- !u!114 &5984463525881257693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,10 +248,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11580f0a976365a45bf38bec292ba61b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpellType: 1
   SpellName: Heal
-  SpellCoolDown: 10
-  healAmount: 7
   healParticles: {fileID: 2131835069339609861, guid: a75fa17bd945e14459e1de187dca121f, type: 3}
+  spellLevels:
+  - HealAmount: 5
+    SpellCoolDown: 10
+  - HealAmount: 8
+    SpellCoolDown: 10
 --- !u!1 &3242498983995732470
 GameObject:
   m_ObjectHideFlags: 0

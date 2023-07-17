@@ -4,8 +4,17 @@ using UnityEngine;
 
 public abstract class Spell : MonoBehaviour
 {
+    public SpellType SpellType;
     public string SpellName;
-    public float SpellCoolDown;
 
-    public abstract void CastSpell();
+    public abstract void CastSpell(int spellLevel);
+
+    public abstract float GetCoolDownTine(int spellLevel);
+}
+
+public enum SpellType
+{
+    Firebolt = 0,
+    Heal = 1,
+    Lighting = 2
 }

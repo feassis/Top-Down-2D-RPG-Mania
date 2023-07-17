@@ -16,7 +16,8 @@ public class Projectile : DamageSource
 
     private void DestroySelf(object sender, CollisionEventHandler e)
     {
-        if(SameTeam(e) || e.Collision.gameObject.tag == "CameraConfiner")
+        if(SameTeam(e) || e.Collision.gameObject.tag == "CameraConfiner"
+            || e.Collision.gameObject.tag == "Canopy")
         {
             return;
         }

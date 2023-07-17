@@ -6,6 +6,7 @@ TagManager:
   tags:
   - CameraConfiner
   - Enemy
+  - Canopy
   layers:
   - Default
   - TransparentFX
