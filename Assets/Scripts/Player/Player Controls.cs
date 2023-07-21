@@ -190,6 +190,34 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""Actions"",
+            ""id"": ""1ce5a0f6-836c-49fc-8d62-9c849fabb576"",
+            ""actions"": [
+                {
+                    ""name"": ""Interactable"",
+                    ""type"": ""Button"",
+                    ""id"": ""f067214c-f791-4232-86ee-631205a56843"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5ee5c28d-4478-440d-a975-d53cf2453d30"",
+                    ""path"": ""<Keyboard>/#(E)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interactable"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -205,6 +233,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_TogglePauseMenu = m_Menu.FindAction("TogglePauseMenu", throwIfNotFound: true);
+        // Actions
+        m_Actions = asset.FindActionMap("Actions", throwIfNotFound: true);
+        m_Actions_Interactable = m_Actions.FindAction("Interactable", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -416,6 +447,52 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         }
     }
     public MenuActions @Menu => new MenuActions(this);
+
+    // Actions
+    private readonly InputActionMap m_Actions;
+    private List<IActionsActions> m_ActionsActionsCallbackInterfaces = new List<IActionsActions>();
+    private readonly InputAction m_Actions_Interactable;
+    public struct ActionsActions
+    {
+        private @PlayerControls m_Wrapper;
+        public ActionsActions(@PlayerControls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Interactable => m_Wrapper.m_Actions_Interactable;
+        public InputActionMap Get() { return m_Wrapper.m_Actions; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(ActionsActions set) { return set.Get(); }
+        public void AddCallbacks(IActionsActions instance)
+        {
+            if (instance == null || m_Wrapper.m_ActionsActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_ActionsActionsCallbackInterfaces.Add(instance);
+            @Interactable.started += instance.OnInteractable;
+            @Interactable.performed += instance.OnInteractable;
+            @Interactable.canceled += instance.OnInteractable;
+        }
+
+        private void UnregisterCallbacks(IActionsActions instance)
+        {
+            @Interactable.started -= instance.OnInteractable;
+            @Interactable.performed -= instance.OnInteractable;
+            @Interactable.canceled -= instance.OnInteractable;
+        }
+
+        public void RemoveCallbacks(IActionsActions instance)
+        {
+            if (m_Wrapper.m_ActionsActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IActionsActions instance)
+        {
+            foreach (var item in m_Wrapper.m_ActionsActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_ActionsActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public ActionsActions @Actions => new ActionsActions(this);
     public interface IMovementActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -429,5 +506,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     public interface IMenuActions
     {
         void OnTogglePauseMenu(InputAction.CallbackContext context);
+    }
+    public interface IActionsActions
+    {
+        void OnInteractable(InputAction.CallbackContext context);
     }
 }

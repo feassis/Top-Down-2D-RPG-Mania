@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,8 @@ public class PlayerController : Singleton<PlayerController>
     private bool isDashing = false;
     private bool isOnDashingCooldown = false;
 
+    private List<IInteractable> interactables = new List<IInteractable>();
+
     public bool FacingLeft { get { return facingLeft; } set { facingLeft = value; } }
 
     protected override void Awake()
@@ -32,6 +35,18 @@ public class PlayerController : Singleton<PlayerController>
     private void Start()
     {
         playerControl.Combat.Dash.performed += _ => Dash();
+        playerControl.Actions.Interactable.performed += _ => TryInteract();
+    }
+
+    private void TryInteract()
+    {
+        if(interactables.Count <= 0)
+        {
+            return;
+        }
+
+        interactables[0].Interact();
+        interactables.Remove(interactables[0]);
     }
 
     private void OnEnable()
@@ -113,7 +128,15 @@ public class PlayerController : Singleton<PlayerController>
         isOnDashingCooldown = false;
     }
 
+    public void AddInteractable(IInteractable interactable)
+    {
+        interactables.Add(interactable);
+    }
 
+    public void RemoveInteractable(IInteractable interactable)
+    {
+        interactables.Remove(interactable);
+    }
 
     private void AdjustPlayerFacingDirection()
     {
