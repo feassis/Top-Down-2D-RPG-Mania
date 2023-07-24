@@ -50,6 +50,7 @@ public class SpellTomeUI : MonoBehaviour
     {
         var powerUi = powerUpUiList.Find(p => p.Spell == e.SpellType);
         powerUpUiList.Remove(powerUi);
+        RefreshUI();
     }
 
     private void SpellTome_OnPowerUpAdded(object sender, SpellTome.EventHandlerPowerUP e)
@@ -67,6 +68,7 @@ public class SpellTomeUI : MonoBehaviour
             Image powerUpUI = Instantiate<Image>(powerUIPrefab, powerUpHolder);
             powerUpUiList.Add(new PowerUpUI(e.SpellType, powerUpUI, e.Timer, e.Timer));
         }
+        RefreshUI();
     }
 
     private void SpellTome_OnSpellChange(object sender, EventArgs e)
@@ -76,7 +78,14 @@ public class SpellTomeUI : MonoBehaviour
 
     private void RefreshUI()
     {
-        spellName.text = SpellTome.Instance.GetSelectedSpellName();
+        string powerUpSign = "";
+
+        if (SpellTome.Instance.IsSelectedPowerUp())
+        {
+            powerUpSign = " + ";
+        }
+
+        spellName.text = SpellTome.Instance.GetSelectedSpellName() + powerUpSign;
         spellCd.text = SpellTome.Instance.GetSelectedSpellTimer().ToString();
     }
 
