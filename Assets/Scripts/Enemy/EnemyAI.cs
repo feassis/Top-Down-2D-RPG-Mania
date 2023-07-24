@@ -17,6 +17,9 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private Knockback knockback;
     [SerializeField] private EnemyAiAttackPattern enemyAIAttackPattern;
     [SerializeField] private EnemyHPBar hpBar;
+    [SerializeField] private EnemyHealth enemyHealth;
+    [SerializeField] private DamageSource damageSource;
+    [SerializeField] private Rigidbody2D rb;
 
     private Transform target;
     private State state;
@@ -36,7 +39,8 @@ public class EnemyAI : MonoBehaviour
         Roaming = 0,
         Chasing = 1,
         Attacking = 2, 
-        KnockBack = 3
+        KnockBack = 3,
+        Stunned = 4
     }
 
     private void Awake()
@@ -54,6 +58,20 @@ public class EnemyAI : MonoBehaviour
         aiDestinationSetter.enabled = false;
         knockback.OnKnockbackStart += Knockback_OnKnockbackStart;
         knockback.OnKnockbackFinish += Knockback_OnKnockbackFinish;
+        enemyHealth.OnEnemyHPReachZero += EnemyHealth_OnEnemyHPReachZero;
+        enemyHealth.OnEnemyHPRefreshed += EnemyHealth_OnEnemyHPRefreshed;
+    }
+
+    private void EnemyHealth_OnEnemyHPRefreshed(object sender, System.EventArgs e)
+    {
+        damageSource.ToggleDamageSource(true);
+        rb.isKinematic = false;
+        GoToState(State.Roaming);
+    }
+
+    private void EnemyHealth_OnEnemyHPReachZero(object sender, System.EventArgs e)
+    {
+        GoToState(State.Stunned);
     }
 
     private void Knockback_OnKnockbackFinish(object sender, System.EventArgs e)
@@ -79,6 +97,11 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
+        if(state == State.Stunned)
+        {
+            return;
+        }
+
         if(state == State.Roaming)
         {
             hpBar.gameObject.SetActive(false);
@@ -152,6 +175,16 @@ public class EnemyAI : MonoBehaviour
                 aiPath.enabled = false;
                 aiDestinationSetter.enabled = false;
 
+                break;
+            case State.Stunned:
+                StopCoroutine(roamingRoutine);
+                knockback.StopKnockBack();
+                aiDestinationSetter.target = null;
+                enemyPathfinding.enabled = false;
+                aiPath.enabled = false;
+                aiDestinationSetter.enabled = false;
+                damageSource.ToggleDamageSource(false);
+                rb.isKinematic = true;
                 break;
             default:
                 break;

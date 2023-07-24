@@ -10,6 +10,13 @@ public class EnemyHealth : MonoBehaviour, IDamagable
     [SerializeField] private Flash flash;
     [SerializeField] private GameObject deathVFX;
 
+    [SerializeField] private bool shouldDestroOnDeath;
+    [SerializeField] private GameObject zzzObject;
+    [SerializeField] private float unconsciousTime = 60f;
+
+    public event EventHandler OnEnemyHPReachZero;
+    public event EventHandler OnEnemyHPRefreshed;
+
     private Action OnHPChange;
 
     private float currentHP;
@@ -40,8 +47,29 @@ public class EnemyHealth : MonoBehaviour, IDamagable
 
     private void Death()
     {
-        Instantiate(deathVFX, transform.position, Quaternion.identity);
-        Destroy(gameObject);
+        if (shouldDestroOnDeath)
+        {
+            Instantiate(deathVFX, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+            return;
+        }
+
+        StartCoroutine(UnconsciousCoroutine());
+    }
+
+    private IEnumerator UnconsciousCoroutine()
+    {
+        OnEnemyHPReachZero?.Invoke(this, EventArgs.Empty);
+
+        zzzObject.SetActive(true);
+
+        yield return new WaitForSeconds(unconsciousTime);
+
+        currentHP = maxHP;
+        OnHPChange?.Invoke();
+
+        zzzObject.SetActive(false);
+        OnEnemyHPRefreshed?.Invoke(this, EventArgs.Empty);
     }
 
     public (float currentHP, float maxHP) GetHPInfo()
