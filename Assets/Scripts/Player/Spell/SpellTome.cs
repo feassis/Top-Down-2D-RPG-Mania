@@ -160,6 +160,20 @@ public class SpellTome : Singleton<SpellTome>
         }
     }
 
+    public bool IsSelectedPowerUp()
+    {
+        var spell = avaliableSpells[currentSpellIndex];
+
+        var powerUp = powerUps.Find(p => p.Spell == spell.Spell.SpellType);
+
+        if (powerUp != null)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
     public string GetSelectedSpellName() => 
         avaliableSpells[currentSpellIndex].GetSpellName();
 
