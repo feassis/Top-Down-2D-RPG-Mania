@@ -75545,6 +75545,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 917485903}
     m_Modifications:
+    - target: {fileID: 3034956790902153038, guid: 1a4363428cea99a45a70c937191f5416, type: 3}
+      propertyPath: unconsciousTime
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 3312159742996115746, guid: 1a4363428cea99a45a70c937191f5416, type: 3}
       propertyPath: m_Name
       value: Slime

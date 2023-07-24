@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class EnemyHPBar : BaseHPBar
 {
@@ -9,5 +10,12 @@ public class EnemyHPBar : BaseHPBar
         damagable.SubscribeToHPChange(UpdateHPInfo);
         UpdateHPInfo();
         hpBackFillBar.fillAmount = barTarget;
+
+        enemyHealth.OnEnemyHPReachZero += EnemyHeath_OnEnemyHPReachZero;
+    }
+
+    private void EnemyHeath_OnEnemyHPReachZero(object sender, EventArgs e)
+    {
+        gameObject.SetActive(false);
     }
 }

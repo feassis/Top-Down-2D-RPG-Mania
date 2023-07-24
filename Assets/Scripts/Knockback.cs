@@ -12,6 +12,8 @@ public class Knockback : MonoBehaviour
     public event EventHandler OnKnockbackFinish;
 
     public bool GettingKnockedBack { get; private set; }
+    private IEnumerator knockbackRoutine;
+
 
     public void GetknockedBack(Vector3 damageSource, float knockBackForce)
     {
@@ -20,7 +22,16 @@ public class Knockback : MonoBehaviour
         Vector2 diference = (transform.position - damageSource).normalized * knockBackForce * rb.mass;
         rb.AddForce(diference, ForceMode2D.Impulse);
 
-        StartCoroutine(ResetKnockBack());
+        knockbackRoutine = ResetKnockBack();
+        StartCoroutine(knockbackRoutine);
+    }
+
+    public void StopKnockBack()
+    {
+        StopCoroutine(knockbackRoutine);
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = 0f;
+        GettingKnockedBack = false;
     }
 
     private IEnumerator ResetKnockBack()

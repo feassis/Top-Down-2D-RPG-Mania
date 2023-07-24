@@ -11,6 +11,12 @@ public class DamageSource : MonoBehaviour
     [SerializeField] private Transform knockbackSource;
     [SerializeField] protected bool isPlayer = true;
 
+    private bool isOn = true; 
+    public void ToggleDamageSource(bool toggle)
+    {
+        isOn = toggle;
+    }
+
     public event EventHandler<CollisionEventHandler> OnObstacleHited;
 
     public class CollisionEventHandler : EventArgs
@@ -20,6 +26,11 @@ public class DamageSource : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (!isOn)
+        {
+            return;
+        }
+
         if (isPlayer)
         {
             DamageAsPlayer(collision);
