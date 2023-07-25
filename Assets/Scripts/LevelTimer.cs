@@ -39,4 +39,16 @@ public class LevelTimer : Singleton<LevelTimer>
         int hours = seconds / 3600;
         timerText.text = $"{hours} : { (seconds % 3600) / 60} : {(seconds % 3600) % 60}";
     }
+
+    public string GetTimerString()
+    {
+        int seconds = Mathf.RoundToInt(timer);
+        int hours = seconds / 3600;
+        return $"{hours} : { (seconds % 3600) / 60} : {(seconds % 3600) % 60}";
+    }
+
+    public float GetLevelDuration()
+    {
+        return timer;
+    } 
 }
