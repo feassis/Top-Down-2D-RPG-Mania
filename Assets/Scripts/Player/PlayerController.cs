@@ -13,6 +13,7 @@ public class PlayerController : Singleton<PlayerController>
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform trail;
     [SerializeField] private Knockback knockback;
+    [SerializeField] private AudioSource dashSound;
 
     private PlayerControls playerControl;
     private Vector2 movement;
@@ -114,6 +115,7 @@ public class PlayerController : Singleton<PlayerController>
             return;
         }
 
+        dashSound.Play();
         isDashing = true;
         isOnDashingCooldown = true;
         

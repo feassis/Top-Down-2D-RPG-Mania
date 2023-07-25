@@ -27,6 +27,8 @@ public class FireboltSpell : Spell
         FireboltLevels level = spellLevels[spellLevel];
         for (int i = 0; i < level.ProjectileAmount; i++)
         {
+            spellCastSound.Play(); 
+
             Vector3 position = Camera.main.ScreenToViewportPoint(Input.mousePosition);
             var playerPos = PlayerController.Instance.transform.position;
 

@@ -6,6 +6,7 @@ public abstract class Spell : MonoBehaviour
 {
     public SpellType SpellType;
     public string SpellName;
+    [SerializeField] protected AudioSource spellCastSound;
 
     public abstract void CastSpell(int spellLevel);
 
