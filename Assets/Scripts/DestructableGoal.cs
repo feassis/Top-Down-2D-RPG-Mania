@@ -8,7 +8,7 @@ public class DestructableGoal : MonoBehaviour
     public static event EventHandler OnAnyDestructableGoalDestroyed;
     void Start()
     {
-        
+        LevelDirector.Instance.RegisterDestructableGoal(this);
     }
 
     private void OnDestroy()
