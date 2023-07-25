@@ -6,6 +6,7 @@ public class Chest : MonoBehaviour, IInteractable
 {
     [SerializeField] private Animator animator;
     [SerializeField] private SpellPowerUp powerUpPrefab;
+    [SerializeField] private AudioSource chestSound;
 
     private const string openAnimName = "ChestOpen";
 
@@ -28,6 +29,7 @@ public class Chest : MonoBehaviour, IInteractable
     public void Interact()
     {
         animator.Play(openAnimName);
+        chestSound.Play();
         Instantiate(powerUpPrefab, transform.position, Quaternion.identity);
         this.enabled = false;
     }

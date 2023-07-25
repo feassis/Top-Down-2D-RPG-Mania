@@ -18,6 +18,7 @@ public class Sword : MonoBehaviour
     [SerializeField] private GameObject chargedParticle;
     [SerializeField] private float attackCooldown = 1f;
     [SerializeField] private float chargeAttackTime = 2f;
+    [SerializeField] private List<AudioSource> swingSounds;
 
     private bool attackButtonDown = false;
     private bool isAttacking = false;
@@ -50,6 +51,13 @@ public class Sword : MonoBehaviour
     private void OnDisable()
     {
         playerControls.Disable();
+    }
+
+    private void PlayRandomSwing()
+    {
+        var randomIndex = UnityEngine.Random.Range(0, swingSounds.Count);
+
+        swingSounds[randomIndex].Play();
     }
 
     private void Start()
@@ -118,6 +126,7 @@ public class Sword : MonoBehaviour
 
     private void ExecuteChargeAttack()
     {
+        PlayRandomSwing();
         chargedWeaponCollider.gameObject.SetActive(true);
         isChargeAttacking = true;
         animator.SetTrigger("chargeAttack");
@@ -147,6 +156,7 @@ public class Sword : MonoBehaviour
         slashAnim = Instantiate(slashPrefab, slashAnimSpawn.position, Quaternion.identity);
         slashAnim.transform.parent = transform.parent;
         slashAnim.gameObject.GetComponent<SpriteRenderer>().flipX = playerController.FacingLeft;
+        PlayRandomSwing();
         StartCoroutine(ResetAttackCooldown());
 
         if(chargeRoutine != null)
