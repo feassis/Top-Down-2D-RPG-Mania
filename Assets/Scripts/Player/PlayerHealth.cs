@@ -46,7 +46,7 @@ public class PlayerHealth : Singleton<PlayerHealth>, IDamagable
 
     private void Death()
     {
-        
+        LevelDefeat.Instance.Open();
     }
 
     public (float currentHP, float maxHP) GetHPInfo()
