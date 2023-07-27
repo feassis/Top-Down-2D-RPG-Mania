@@ -13,6 +13,7 @@ public class LevelComplete : Singleton<LevelComplete>
     [SerializeField] private Button nextLevelButton;
     [SerializeField] private TextMeshProUGUI timerText;
     [SerializeField] private GameObject bg;
+    [SerializeField] private AudioSource buttonSound;
 
     private string nextLevelName;
 
@@ -36,6 +37,7 @@ public class LevelComplete : Singleton<LevelComplete>
 
     private void OnNextLevelButtonClicked()
     {
+        buttonSound.Play();
         Close();
         SceneManager.LoadScene(nextLevelName);
     }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6643671071454844002}
   - component: {fileID: 5424622775453995806}
   - component: {fileID: 8197721471344000782}
+  - component: {fileID: 2707047208936390840}
   m_Layer: 0
   m_Name: LightningSphere
   m_TagString: Untagged
@@ -53,6 +54,10 @@ MonoBehaviour:
   knockbackSource: {fileID: 6643671071454844002}
   isPlayer: 1
   lifetime: 0.3
+  visuals: {fileID: 5236145055484247722}
+  particles: {fileID: 7007866358607145895}
+  collider: {fileID: 2707047208936390840}
+  lightningAudioSource: {fileID: 8197721471344000782}
 --- !u!82 &8197721471344000782
 AudioSource:
   m_ObjectHideFlags: 0
@@ -149,6 +154,41 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!58 &2707047208936390840
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5170948205272191187}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.0057373047, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.0106177
 --- !u!1 &5236145055484247722
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +200,6 @@ GameObject:
   - component: {fileID: 4273516183756164985}
   - component: {fileID: 6364395154265337539}
   - component: {fileID: 4912126195644272082}
-  - component: {fileID: 319326392438581201}
   m_Layer: 0
   m_Name: Circle
   m_TagString: Untagged
@@ -255,41 +294,10 @@ MonoBehaviour:
   knockbackSource: {fileID: 6643671071454844002}
   isPlayer: 1
   lifetime: 0.3
---- !u!58 &319326392438581201
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5236145055484247722}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.012557983, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
+  visuals: {fileID: 0}
+  particles: {fileID: 0}
+  collider: {fileID: 0}
+  lightningAudioSource: {fileID: 0}
 --- !u!1 &7007866358607145895
 GameObject:
   m_ObjectHideFlags: 0
