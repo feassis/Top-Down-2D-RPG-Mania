@@ -9,6 +9,7 @@ public class LevelDefeat : Singleton<LevelDefeat>
     [SerializeField] private Button mainMenuButton;
     [SerializeField] private Button retryButton;
     [SerializeField] private GameObject bg;
+    [SerializeField] private AudioSource buttonSound;
 
     protected override void Awake()
     {
@@ -19,11 +20,13 @@ public class LevelDefeat : Singleton<LevelDefeat>
 
     private void OnRetryClicked()
     {
+        buttonSound.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     private void OnMenuButtonClicked()
     {
+        buttonSound.Play();
         SceneManager.LoadScene("MainMenu");
     }
 

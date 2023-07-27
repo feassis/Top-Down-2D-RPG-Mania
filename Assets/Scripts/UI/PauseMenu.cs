@@ -11,6 +11,7 @@ public class PauseMenu : Singleton<PauseMenu>
     [SerializeField] private Button optionsButtom;
     [SerializeField] private Button quitButtom;
     [SerializeField] private GameObject panel;
+    [SerializeField] private AudioSource buttonSound;
 
     private PlayerControls controls;
     private bool isOpen;
@@ -52,17 +53,25 @@ public class PauseMenu : Singleton<PauseMenu>
 
     private void OnQuitButtonClicked()
     {
+        PlayAudioSound();
         Application.Quit();
     }
 
     private void OnOptionsButtonClicked()
     {
+        PlayAudioSound();
         Debug.Log("To Be Defined");
     }
 
     private void OnResumeButtonClicked()
     {
+        PlayAudioSound();
         CloseMenu();
+    }
+
+    private void PlayAudioSound()
+    {
+        buttonSound.Play();
     }
 
     private void OpenMenu()

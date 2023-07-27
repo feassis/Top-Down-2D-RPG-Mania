@@ -21,6 +21,7 @@ public class HealSpell : Spell
         var playerHealth = PlayerHealth.Instance;
 
         playerHealth.Heal(level.HealAmount);
+        spellCastSound.Play();
 
         Instantiate(healParticles, playerHealth.transform.position, Quaternion.identity);
     }
