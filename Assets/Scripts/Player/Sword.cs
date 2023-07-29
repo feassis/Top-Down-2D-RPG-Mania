@@ -20,6 +20,7 @@ public class Sword : MonoBehaviour
     [SerializeField] private float chargeAttackTime = 2f;
     [SerializeField] private List<AudioSource> swingSounds;
     [SerializeField] private List<AudioSource> chargedSwingSounds;
+    [SerializeField] private AudioSource chargingUpSound;
 
     private bool attackButtonDown = false;
     private bool isAttacking = false;
@@ -77,6 +78,7 @@ public class Sword : MonoBehaviour
     private void Released()
     {
         chargedWeaponCollider.gameObject.SetActive(false);
+        chargingUpSound.Stop();
         if (chargedParticlesInstance)
         {
             Destroy(chargedParticlesInstance);
@@ -179,6 +181,7 @@ public class Sword : MonoBehaviour
 
     private IEnumerator ChargingRoutine()
     {
+        chargingUpSound.Play();
         yield return new WaitForSeconds(chargeAttackTime / 3);
         Instantiate(chargingParticle, chargeParticleSpawnPoint.position, Quaternion.identity); 
         yield return new WaitForSeconds(chargeAttackTime / 3);
