@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{18C6430F-5C82-4119-A669-A4DE9B450757}" SchemaVersion="110">
 	<SoundBanks>
-		<WorkUnit Name="Default Work Unit" ID="{18C6430F-5C82-4119-A669-A4DE9B450757}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{18C6430F-5C82-4119-A669-A4DE9B450757}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Main" ID="{A5F46563-6E99-4E6E-8DD5-0E4664C2F274}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Main Menu" ID="{5294CA54-ADEC-42AA-AC63-3D46FE0289DC}" WorkUnitID="{BA28ACAC-9A05-45BB-B971-0C00D28BF4F0}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Level-Game Complete Transition" ID="{D7E587E7-C193-4361-8690-664F565B4512}" WorkUnitID="{BA28ACAC-9A05-45BB-B971-0C00D28BF4F0}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Level Complete Intro" ID="{A6C6C156-62CB-4440-8514-1728EB43F278}" WorkUnitID="{BA28ACAC-9A05-45BB-B971-0C00D28BF4F0}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Village-Combat" ID="{12BF2E20-0B42-49A6-9CE7-AD31925EF35F}" WorkUnitID="{BA28ACAC-9A05-45BB-B971-0C00D28BF4F0}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Level-Game Complete" ID="{4B31DF8D-D73E-4B53-970A-AC9ADAFC4243}" WorkUnitID="{BA28ACAC-9A05-45BB-B971-0C00D28BF4F0}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
 	</SoundBanks>
 </WwiseDocument>
