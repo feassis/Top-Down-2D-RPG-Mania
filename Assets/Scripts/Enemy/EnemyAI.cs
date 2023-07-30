@@ -169,7 +169,10 @@ public class EnemyAI : MonoBehaviour
                 StartCoroutine(roamingRoutine);
                 break;
             case State.Chasing:
-                AkSoundEngine.SetState("Village_Combat", "Combat_Normal"); //Set Music State to Combat Music
+                if (gameObject.name == "Boss") //Set Music State to Combat Music depending on if enemy is normal or Chief.
+                    AkSoundEngine.SetState("Village_Combat", "Combat_Final"); 
+                else
+                    AkSoundEngine.SetState("Village_Combat", "Combat_Normal"); 
                 StopCoroutine(roamingRoutine);
                 enemyPathfinding.enabled = false;
                 aiPath.enabled = true;
