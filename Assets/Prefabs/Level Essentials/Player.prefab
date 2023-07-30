@@ -719,6 +719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7078970366898599035}
+  playerAnimetor: {fileID: 6487847873806791114}
   playerController: {fileID: 3239883253284556316}
   activeWeapon: {fileID: 1197833604260994234}
   slashAnimSpawn: {fileID: 3227794867080325859}
@@ -998,8 +999,8 @@ Transform:
   m_GameObject: {fileID: 3856213818416123792}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.64, y: 0.64, z: 0.64}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 527536960209201114}
   - {fileID: 4777330390184249752}
@@ -1054,7 +1055,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 471245295, guid: b4b27d91803bec74589f2c3d95a79483, type: 3}
+  m_Sprite: {fileID: 640039999, guid: cf4544837993df8489188435031dbb0e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1167,9 +1168,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07119889, y: -0.016184818}
-  m_Size: {x: 0.45462406, y: 0.33301613}
-  m_Direction: 1
+  m_Offset: {x: -0.13753846, y: -0.42529273}
+  m_Size: {x: 0.87209874, y: 1.2348878}
+  m_Direction: 0
 --- !u!114 &2701501048433507019
 MonoBehaviour:
   m_ObjectHideFlags: 0
