@@ -20,6 +20,8 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private EnemyHealth enemyHealth;
     [SerializeField] private DamageSource damageSource;
     [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer sprite;
 
     private Transform target;
     private State state;
@@ -27,6 +29,7 @@ public class EnemyAI : MonoBehaviour
     private bool isAttackRange;
     private IEnumerator roamingRoutine;
     private State previousState;
+    private Vector3 targetDirection;
 
     private enum AttackType
     {
@@ -54,7 +57,8 @@ public class EnemyAI : MonoBehaviour
         hpBar.gameObject.SetActive(true);
         roamingRoutine = RoamingRoutine();
         StartCoroutine(roamingRoutine);
-        aiDestinationSetter.target = PlayerController.Instance.transform;
+        target = PlayerController.Instance.transform;
+        aiDestinationSetter.target = target;
         aiDestinationSetter.enabled = false;
         knockback.OnKnockbackStart += Knockback_OnKnockbackStart;
         knockback.OnKnockbackFinish += Knockback_OnKnockbackFinish;
@@ -115,6 +119,11 @@ public class EnemyAI : MonoBehaviour
         isChaseRange = Physics2D.OverlapCircle(transform.position, checkRadious, whatIsPlayer);
         isAttackRange = Physics2D.OverlapCircle(transform.position, attackRadious, whatIsPlayer);
 
+        targetDirection = (target.transform.position - transform.position).normalized;
+        animator.SetFloat("Speed", targetDirection.magnitude);
+        animator.SetBool("IsAttacking", isAttackRange);
+        sprite.flipX = targetDirection.x < 0;
+
         if (isAttackRange)
         {
             hpBar.gameObject.SetActive(true);
@@ -174,6 +183,7 @@ public class EnemyAI : MonoBehaviour
             case State.KnockBack:
                 aiPath.enabled = false;
                 aiDestinationSetter.enabled = false;
+                animator.SetFloat("Speed", 0);
 
                 break;
             case State.Stunned:
@@ -185,6 +195,7 @@ public class EnemyAI : MonoBehaviour
                 aiDestinationSetter.enabled = false;
                 damageSource.ToggleDamageSource(false);
                 rb.isKinematic = true;
+                animator.SetFloat("Speed", 0);
                 break;
             default:
                 break;

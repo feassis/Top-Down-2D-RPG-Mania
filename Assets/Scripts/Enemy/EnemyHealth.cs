@@ -11,8 +11,12 @@ public class EnemyHealth : MonoBehaviour, IDamagable
     [SerializeField] private GameObject deathVFX;
 
     [SerializeField] private bool shouldDestroOnDeath;
-    [SerializeField] private GameObject zzzObject;
     [SerializeField] private float unconsciousTime = 60f;
+    [SerializeField] private Animator animator;
+    [SerializeField] private float DeathAnimationduration = 1f;
+
+    private const string deathAnimationName = "Death";
+    private const string idleAnimationName = "Idle";
 
     public event EventHandler OnEnemyHPReachZero;
     public event EventHandler OnEnemyHPRefreshed;
@@ -47,29 +51,35 @@ public class EnemyHealth : MonoBehaviour, IDamagable
 
     private void Death()
     {
+        animator.SetBool("IsAttacking", false);
+        animator.Play(deathAnimationName);
         if (shouldDestroOnDeath)
         {
-            Instantiate(deathVFX, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            StartCoroutine(DestroyRoutine());
             return;
         }
 
         StartCoroutine(UnconsciousCoroutine());
     }
 
+    private IEnumerator DestroyRoutine()
+    {
+        Instantiate(deathVFX, transform.position, Quaternion.identity);
+        
+        yield return new WaitForSeconds(DeathAnimationduration);
+        Destroy(gameObject);
+    }
+
     private IEnumerator UnconsciousCoroutine()
     {
         OnEnemyHPReachZero?.Invoke(this, EventArgs.Empty);
-
-        zzzObject.SetActive(true);
 
         yield return new WaitForSeconds(unconsciousTime);
 
         currentHP = maxHP;
         OnHPChange?.Invoke();
-
-        zzzObject.SetActive(false);
         OnEnemyHPRefreshed?.Invoke(this, EventArgs.Empty);
+        animator.Play(idleAnimationName);
     }
 
     public (float currentHP, float maxHP) GetHPInfo()

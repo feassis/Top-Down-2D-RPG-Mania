@@ -50,12 +50,12 @@ public class LevelDirector : Singleton<LevelDirector>
     protected override void Awake()
     {
         base.Awake();
-        LevelTimer.Instance.StartTimer();
     }
 
     private void Start()
     {
-        if(levelCompletionRequirement == LevelCompletionRequirement.TargetDestroyed)
+        LevelTimer.Instance.StartTimer();
+        if (levelCompletionRequirement == LevelCompletionRequirement.TargetDestroyed)
         {
             DestructableGoal.OnAnyDestructableGoalDestroyed += OnAnyDestructableGoal;
         }
