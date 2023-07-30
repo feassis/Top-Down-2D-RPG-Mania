@@ -703,7 +703,7 @@ MonoBehaviour:
   newGameButtom: {fileID: 164653238}
   optionsButtom: {fileID: 215977952}
   quitButtom: {fileID: 1318220027}
-  newGameSceneName: Scene 1
+  newGameSceneName: IntroScene
   buttonSound: {fileID: 835785668}
 --- !u!82 &835785668
 AudioSource:
