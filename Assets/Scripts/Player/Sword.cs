@@ -6,6 +6,7 @@ using UnityEngine;
 public class Sword : MonoBehaviour
 {
     [SerializeField] private Animator animator;
+    [SerializeField] private Animator playerAnimetor;
     [SerializeField] private PlayerController playerController;
     [SerializeField] private ActiveWeapon activeWeapon;
     [SerializeField] private Transform slashAnimSpawn;
@@ -32,6 +33,7 @@ public class Sword : MonoBehaviour
     private const string swingUpAniState = "SwingUp";
     private const string chargedSwingDownAniState = "ChargedSwingDown";
     private const string chargedSwingUpAniState = "ChargedSwingUp";
+    private const string attackAniState = "Attack";
 
     private PlayerControls playerControls;
 
@@ -136,6 +138,7 @@ public class Sword : MonoBehaviour
 
     private void ExecuteChargeAttack()
     {
+        playerAnimetor.Play(attackAniState);
         PlayRandomChargedSwing();
         chargedWeaponCollider.gameObject.SetActive(true);
         isChargeAttacking = true;
@@ -166,6 +169,7 @@ public class Sword : MonoBehaviour
         slashAnim = Instantiate(slashPrefab, slashAnimSpawn.position, Quaternion.identity);
         slashAnim.transform.parent = transform.parent;
         slashAnim.gameObject.GetComponent<SpriteRenderer>().flipX = playerController.FacingLeft;
+        playerAnimetor.Play(attackAniState);
         PlayRandomSwing();
         StartCoroutine(ResetAttackCooldown());
 
