@@ -305,15 +305,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf7772e1f4ab29145a59cd9595e6aaaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 3
+  maxHP: 30
   knockback: {fileID: 7423197916835538829}
   flash: {fileID: 6437086998210080187}
   deathVFX: {fileID: 2131835069339609861, guid: cb3e3ddb8ceb5824d9f9e7d2c5f134dd, type: 3}
   shouldDestroOnDeath: 1
   zzzObject: {fileID: 1396696641290797766}
+<<<<<<< HEAD:Assets/Prefabs/Enemies/BossLime.prefab
   unconsciousTime: 60
   animator: {fileID: 8215316163113186256}
   DeathAnimationduration: 1
+=======
+  unconsciousTime: 240
+>>>>>>> 2e41501a89765a476f9b483cd7cddcf552457497:Assets/Prefabs/BossLime.prefab
 --- !u!114 &7423197916835538829
 MonoBehaviour:
   m_ObjectHideFlags: 0

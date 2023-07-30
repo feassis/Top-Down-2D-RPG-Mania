@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{EB3BE6D5-AC8A-4F6A-8199-47CC9286067F}" SchemaVersion="110">
+	<States>
+		<WorkUnit Name="Default Work Unit" ID="{EB3BE6D5-AC8A-4F6A-8199-47CC9286067F}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="Village_Combat" ID="{088A0FE1-004A-4258-9D36-62894F55DDD4}">
+					<ChildrenList>
+						<State Name="None" ID="{706DD7F4-08EA-4D71-BF92-BED07BA8E6C3}"/>
+						<State Name="Village" ID="{9F6CD453-19BB-4E25-8C36-9FBE1DE2417B}"/>
+						<State Name="Combat_Normal" ID="{6A7DFCAB-2E6E-4868-866A-4F0955AB387E}"/>
+						<State Name="Combat_Final" ID="{177C023E-58BA-4BC3-B45C-DE020F8F5C05}"/>
+						<State Name="Combat_Chief" ID="{226F3412-8568-42DD-887F-EF28DCF7785F}"/>
+					</ChildrenList>
+					<TransitionList>
+						<Transition>
+							<StartState Name="Village" ID="{9F6CD453-19BB-4E25-8C36-9FBE1DE2417B}"/>
+							<EndState Name="Combat_Chief" ID="{226F3412-8568-42DD-887F-EF28DCF7785F}"/>
+							<Time>1</Time>
+							<IsShared>true</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="Village" ID="{9F6CD453-19BB-4E25-8C36-9FBE1DE2417B}"/>
+							<EndState Name="Combat_Normal" ID="{6A7DFCAB-2E6E-4868-866A-4F0955AB387E}"/>
+							<Time>1</Time>
+							<IsShared>true</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="Village" ID="{9F6CD453-19BB-4E25-8C36-9FBE1DE2417B}"/>
+							<EndState Name="Combat_Final" ID="{177C023E-58BA-4BC3-B45C-DE020F8F5C05}"/>
+							<Time>1</Time>
+							<IsShared>true</IsShared>
+						</Transition>
+						<Transition>
+							<StartState Name="Combat_Chief" ID="{226F3412-8568-42DD-887F-EF28DCF7785F}"/>
+							<EndState Name="Combat_Normal" ID="{6A7DFCAB-2E6E-4868-866A-4F0955AB387E}"/>
+							<Time>1</Time>
+							<IsShared>true</IsShared>
+						</Transition>
+					</TransitionList>
+				</StateGroup>
+				<StateGroup Name="Level_Game_Complete" ID="{F7CDB1FF-31EA-44E6-9536-9D17BC7DEA01}">
+					<ChildrenList>
+						<State Name="None" ID="{7F0DCEE4-7C84-44AE-BE67-CDE6A6094620}"/>
+						<State Name="Level_Complete" ID="{ADD0420C-3250-4955-8E58-DB294C4DAD36}"/>
+						<State Name="Game_Complete" ID="{77133E37-1444-450D-B6D1-F600EDD7CCDE}"/>
+					</ChildrenList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
+	</States>
+</WwiseDocument>

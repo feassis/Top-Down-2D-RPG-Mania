@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{A1583EEB-EBB5-483A-A91F-4CA466C70186}" SchemaVersion="110">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{A1583EEB-EBB5-483A-A91F-4CA466C70186}" PersistMode="Standalone">
+			<ChildrenList>
+				<Folder Name="Level-Game Complete" ID="{8A4623A6-2E13-463A-A355-4CB1D1CD7DA9}" ShortID="564783361">
+					<ChildrenList>
+						<Event Name="Play_Level_Game_Complete" ID="{A875B019-0359-4505-BEF7-C38B766DBD22}">
+							<ChildrenList>
+								<Action Name="" ID="{2A9BEA24-945A-4070-9954-9A28C72ED091}" ShortID="679330042">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Level-Game Complete" ID="{4B31DF8D-D73E-4B53-970A-AC9ADAFC4243}" WorkUnitID="{BA28ACAC-9A05-45BB-B971-0C00D28BF4F0}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stop_Level_Game_Complete" ID="{F89FC419-DB66-490C-8A7A-8344B4E2AFAB}">
+							<ChildrenList>
+								<Action Name="" ID="{294BC084-411D-4B96-A0FD-BD26E0BD8CE4}" ShortID="36208559">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Level-Game Complete" ID="{4B31DF8D-D73E-4B53-970A-AC9ADAFC4243}" WorkUnitID="{BA28ACAC-9A05-45BB-B971-0C00D28BF4F0}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Village-Combat" ID="{204E4DD6-B4E6-44B8-85DE-52058797D5B6}" ShortID="631492168">
+					<ChildrenList>
+						<Event Name="Play_Village_Combat" ID="{291344E7-D4E5-4E03-9C4C-8D151BD2DC02}">
+							<ChildrenList>
+								<Action Name="" ID="{B5478237-4FB8-4549-9F8B-5FFC9175E7B3}" ShortID="1057125631">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Village-Combat" ID="{12BF2E20-0B42-49A6-9CE7-AD31925EF35F}" WorkUnitID="{BA28ACAC-9A05-45BB-B971-0C00D28BF4F0}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stop_Village_Combat" ID="{9094A49D-7AC2-4137-B984-8842F0DBC3A1}">
+							<ChildrenList>
+								<Action Name="" ID="{A10E7EE8-1704-4D94-83DE-D13DE25710D1}" ShortID="977107824">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Village-Combat" ID="{12BF2E20-0B42-49A6-9CE7-AD31925EF35F}" WorkUnitID="{BA28ACAC-9A05-45BB-B971-0C00D28BF4F0}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+				<Folder Name="Main Menu" ID="{0CFE51A4-B3FC-418E-8A8F-DBAC54AF2B43}" ShortID="347174173">
+					<ChildrenList>
+						<Event Name="Play_Main_Menu" ID="{B02F6217-B7F7-444C-A923-A241C6800A85}">
+							<ChildrenList>
+								<Action Name="" ID="{966DF4B1-B110-447B-8A08-97B7FC5B4D8E}" ShortID="444498399">
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Main Menu" ID="{5294CA54-ADEC-42AA-AC63-3D46FE0289DC}" WorkUnitID="{BA28ACAC-9A05-45BB-B971-0C00D28BF4F0}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+						<Event Name="Stop_Main_Menu" ID="{0A7E1AF2-9AE8-46C2-ACD2-800397F7FAEE}">
+							<ChildrenList>
+								<Action Name="" ID="{142811AA-D404-4F14-A4E7-61337DBE8A75}" ShortID="563883414">
+									<PropertyList>
+										<Property Name="ActionType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="Target">
+											<ObjectRef Name="Main Menu" ID="{5294CA54-ADEC-42AA-AC63-3D46FE0289DC}" WorkUnitID="{BA28ACAC-9A05-45BB-B971-0C00D28BF4F0}"/>
+										</Reference>
+									</ReferenceList>
+								</Action>
+							</ChildrenList>
+						</Event>
+					</ChildrenList>
+				</Folder>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>
