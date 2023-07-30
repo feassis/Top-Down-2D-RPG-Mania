@@ -22,6 +22,12 @@ public class Projectile : DamageSource
         OnObstacleHited += DestroySelf;
     }
 
+    private void Start()
+    {
+        Quaternion toRotation = Quaternion.LookRotation(Vector3.forward, ShootDirection);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 90f);
+    }
+
     private void DestroySelf(object sender, CollisionEventHandler e)
     {
         if(SameTeam(e) || e.Collision.gameObject.tag == "CameraConfiner"
@@ -76,7 +82,7 @@ public class Projectile : DamageSource
         {
             return;
         }
-
+        
         rb.MovePosition(transform.position + ShootDirection * speed * Time.fixedDeltaTime);
     }
 }
