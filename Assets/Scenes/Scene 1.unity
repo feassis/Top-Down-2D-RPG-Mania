@@ -74558,7 +74558,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 236507026569570858, guid: b2b8cd403445d8d429d59308a5c08233, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -88.10156
+      value: -113
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067747229372826432, guid: b2b8cd403445d8d429d59308a5c08233, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -46
       objectReference: {fileID: 0}
     - target: {fileID: 1743495025411728277, guid: b2b8cd403445d8d429d59308a5c08233, type: 3}
       propertyPath: m_RootOrder
@@ -74604,9 +74608,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2322998637527153715, guid: b2b8cd403445d8d429d59308a5c08233, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 169
+      objectReference: {fileID: 0}
+    - target: {fileID: 2498372151482444986, guid: b2b8cd403445d8d429d59308a5c08233, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2982448855263662951, guid: b2b8cd403445d8d429d59308a5c08233, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 291
+      objectReference: {fileID: 0}
+    - target: {fileID: 3400562034636435512, guid: b2b8cd403445d8d429d59308a5c08233, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3998378508964006352, guid: b2b8cd403445d8d429d59308a5c08233, type: 3}
       propertyPath: m_Name
       value: Managers
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365990647188778401, guid: b2b8cd403445d8d429d59308a5c08233, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -95
+      objectReference: {fileID: 0}
+    - target: {fileID: 4365990647188778401, guid: b2b8cd403445d8d429d59308a5c08233, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 5158082057100916965, guid: b2b8cd403445d8d429d59308a5c08233, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 111
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
