@@ -309,7 +309,7 @@ MonoBehaviour:
   knockback: {fileID: 2975460189748527099}
   flash: {fileID: 2735488799962521507}
   deathVFX: {fileID: 2131835069339609861, guid: cb3e3ddb8ceb5824d9f9e7d2c5f134dd, type: 3}
-  shouldDestroOnDeath: 0
+  shouldDestroOnDeath: 1
   unconsciousTime: 10
   animator: {fileID: 4461876591494214182}
   DeathAnimationduration: 1
