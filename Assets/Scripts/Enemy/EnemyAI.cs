@@ -161,6 +161,7 @@ public class EnemyAI : MonoBehaviour
         switch (desiredState)
         {
             case State.Roaming:
+                AkSoundEngine.SetState("Village_Combat", "Village"); //Set Music State to Village Music
                 aiPath.enabled = false;
                 aiDestinationSetter.enabled = false;
                 enemyPathfinding.enabled = true;
@@ -168,6 +169,7 @@ public class EnemyAI : MonoBehaviour
                 StartCoroutine(roamingRoutine);
                 break;
             case State.Chasing:
+                AkSoundEngine.SetState("Village_Combat", "Combat_Normal"); //Set Music State to Combat Music
                 StopCoroutine(roamingRoutine);
                 enemyPathfinding.enabled = false;
                 aiPath.enabled = true;
