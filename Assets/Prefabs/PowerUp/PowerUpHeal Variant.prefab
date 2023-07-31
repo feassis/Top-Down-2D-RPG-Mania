@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: spell
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2743569925394259556, guid: d2101b2471d2d1b439c227d092af5c9e, type: 3}
+      propertyPath: powerUpDuration
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 4560667717862153728, guid: d2101b2471d2d1b439c227d092af5c9e, type: 3}
       propertyPath: m_Name
       value: PowerUpHeal Variant

@@ -1,0 +1,21 @@
+State Group	ID	Name			Wwise Object Path	Notes
+	1139417068	Level_Game_Complete			\Default Work Unit\Level_Game_Complete	
+	4149808090	Village_Combat			\Default Work Unit\Village_Combat	
+
+State	ID	Name	State Group			Notes
+	748895195	None	Level_Game_Complete			
+	1343734759	Game_Complete	Level_Game_Complete			
+	3736098925	Level_Complete	Level_Game_Complete			
+	432693839	Combat_Chief	Village_Combat			
+	748895195	None	Village_Combat			
+	1503069520	Combat_Final	Village_Combat			
+	3178003625	Combat_Normal	Village_Combat			
+	3945572659	Village	Village_Combat			
+
+Audio Bus	ID	Name			Wwise Object Path	Notes
+	3803692087	Master Audio Bus			\Default Work Unit\Master Audio Bus	
+
+Audio Devices	ID	Name	Type				Notes
+	2317455096	No_Output	No Output			
+	3859886410	System	System			
+
