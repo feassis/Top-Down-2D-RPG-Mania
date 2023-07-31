@@ -10,6 +10,8 @@ public class Chest : MonoBehaviour, IInteractable
 
     private const string openAnimName = "ChestOpen";
 
+    private bool alreadyOpened;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<PlayerController>(out PlayerController player))
@@ -28,10 +30,16 @@ public class Chest : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        if (alreadyOpened)
+        {
+            return;
+        }
+
         animator.Play(openAnimName);
         chestSound.Play();
         Instantiate(powerUpPrefab, transform.position, Quaternion.identity);
         this.enabled = false;
+        alreadyOpened = true;
     }
 
     
