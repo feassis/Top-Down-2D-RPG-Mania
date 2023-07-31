@@ -18,6 +18,8 @@ public class SceneTransition : MonoBehaviour
 
     private void OnNextSceneClicked()
     {
+        AkSoundEngine.SetState("Village_Combat", "Village");
+        AkSoundEngine.PostEvent("Play_Village_Combat", gameObject);
         SceneManager.LoadScene(nextSceneName);
     }
 }

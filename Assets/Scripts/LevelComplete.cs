@@ -40,10 +40,14 @@ public class LevelComplete : Singleton<LevelComplete>
         buttonSound.Play();
         Close();
         SceneManager.LoadScene(nextLevelName);
+        AkSoundEngine.SetState("Village_Combat", "Village");
     }
 
     public void Open()
     {
+        AkSoundEngine.SetState("Village_Combat", "None");
+        AkSoundEngine.SetState("Level_Game_Complete", "Level_Complete");
+        AkSoundEngine.PostEvent("Play_Level_Game_Complete", gameObject);
         bg.SetActive(true);
         Time.timeScale = 0f;
 
@@ -60,6 +64,7 @@ public class LevelComplete : Singleton<LevelComplete>
 
     public void Close()
     {
+        AkSoundEngine.PostEvent("Stop_Level_Game_Complete", gameObject);
         bg.SetActive(false);
         Time.timeScale = 1f;
     }
