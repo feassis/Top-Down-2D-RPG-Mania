@@ -17,6 +17,11 @@ public class Knockback : MonoBehaviour
 
     public void GetknockedBack(Vector3 damageSource, float knockBackForce)
     {
+        if(knockBackForce <= 0)
+        {
+            return;
+        }
+
         OnKnockbackStart?.Invoke(this, EventArgs.Empty);
         GettingKnockedBack = true;
         Vector2 diference = (transform.position - damageSource).normalized * knockBackForce * rb.mass;
