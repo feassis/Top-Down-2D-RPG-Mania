@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77ebc228f880a384881f746680ee8814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageAmount: 3
+  damageAmount: 2
   knockbackPowerOnTarget: 0
   knockbackPowerOnSelf: 0
   shouldKnokbackSelf: 0
@@ -55,6 +55,11 @@ MonoBehaviour:
   isPlayer: 0
   rb: {fileID: 1696710883619940597}
   speed: 10
+  hitSound: {fileID: 0}
+  myCollider: {fileID: 0}
+  mySprite: {fileID: 0}
+  trail: {fileID: 0}
+  light2D: {fileID: 0}
   ShootDirection: {x: 0, y: 0, z: 0}
 --- !u!50 &1696710883619940597
 Rigidbody2D:

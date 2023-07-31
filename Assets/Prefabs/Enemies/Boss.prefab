@@ -440,7 +440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 1
   knockbackPowerOnTarget: 5
-  knockbackPowerOnSelf: 15
+  knockbackPowerOnSelf: 8
   shouldKnokbackSelf: 1
   knockbackSource: {fileID: 8663524801548246712}
   isPlayer: 0

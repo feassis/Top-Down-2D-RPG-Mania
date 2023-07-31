@@ -310,7 +310,6 @@ MonoBehaviour:
   flash: {fileID: 2735488799962521507}
   deathVFX: {fileID: 2131835069339609861, guid: cb3e3ddb8ceb5824d9f9e7d2c5f134dd, type: 3}
   shouldDestroOnDeath: 0
-  zzzObject: {fileID: 6723318811073155240}
   unconsciousTime: 10
   animator: {fileID: 4461876591494214182}
   DeathAnimationduration: 1
@@ -441,7 +440,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageAmount: 1
   knockbackPowerOnTarget: 5
-  knockbackPowerOnSelf: 15
+  knockbackPowerOnSelf: 5
   shouldKnokbackSelf: 1
   knockbackSource: {fileID: 8663524801548246712}
   isPlayer: 0
@@ -619,11 +618,6 @@ PrefabInstance:
 --- !u!224 &940470667869348635 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2874530325076382335, guid: df90f2feec4ada04881ad70f1bc35df2, type: 3}
-  m_PrefabInstance: {fileID: 3092102740126658916}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6723318811073155240 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8621963200360178124, guid: df90f2feec4ada04881ad70f1bc35df2, type: 3}
   m_PrefabInstance: {fileID: 3092102740126658916}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4829781978306279180
