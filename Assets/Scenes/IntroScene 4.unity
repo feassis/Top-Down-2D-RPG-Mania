@@ -243,7 +243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: 372646118}
-  nextSceneName: Level 3
+  nextSceneName: MainMenu
   nextSceneButton: {fileID: 1910711862}
 --- !u!82 &372646118
 AudioSource:
@@ -698,7 +698,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'With all '
+  m_text: 'With all of the villagers defeated, Bert Snake Snake #4 can finally begin
+    his plan of world domination.
+
+
+    Congratulations, you have helped Bert take
+    the first step into becoming a true villain!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -761,7 +766,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -102.1095, z: 0, w: 0}
+  m_margin: {x: 0, y: 12.340088, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -937,7 +942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4067598218858741836, guid: a76ecf85de81dbc43991a7929cfb7ff1, type: 3}
       propertyPath: m_text
-      value: 'play level
+      value: 'Finish Game.
 
 '
       objectReference: {fileID: 0}

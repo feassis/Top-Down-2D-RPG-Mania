@@ -956,9 +956,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4067598218858741836, guid: a76ecf85de81dbc43991a7929cfb7ff1, type: 3}
       propertyPath: m_text
-      value: 'play level
-
-'
+      value: Begin Game
       objectReference: {fileID: 0}
     - target: {fileID: 8606485150050972779, guid: a76ecf85de81dbc43991a7929cfb7ff1, type: 3}
       propertyPath: m_Name
