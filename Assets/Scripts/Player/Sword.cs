@@ -41,6 +41,7 @@ public class Sword : MonoBehaviour
     private SelfDestroy slashAnim;
 
     private IEnumerator chargeRoutine;
+    private IEnumerator resetChargeRoutine;
 
     private void Awake()
     {
@@ -80,8 +81,21 @@ public class Sword : MonoBehaviour
         playerControls.Combat.Attack.canceled += _ => Released();
     }
 
+    private IEnumerator ResetEveryThingAfter2Seconds()
+    {
+        yield return new WaitForSeconds(3.5f);
+        ChargeAttackDone();
+    }
+
     private void Released()
     {
+        if(resetChargeRoutine != null)
+        {
+            StopCoroutine(resetChargeRoutine);
+        }
+        
+        resetChargeRoutine = ResetEveryThingAfter2Seconds();
+        StartCoroutine(resetChargeRoutine);
         chargedWeaponCollider.gameObject.SetActive(false);
         chargingUpSound.Stop();
         if (chargedParticlesInstance)
