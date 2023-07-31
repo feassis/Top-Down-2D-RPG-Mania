@@ -27,6 +27,7 @@ public class LevelDefeat : Singleton<LevelDefeat>
     private void OnMenuButtonClicked()
     {
         buttonSound.Play();
+        AkSoundEngine.SetState("Village_Combat", "None");
         SceneManager.LoadScene("MainMenu");
     }
 
