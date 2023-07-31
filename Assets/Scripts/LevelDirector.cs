@@ -11,6 +11,13 @@ public class LevelDirector : Singleton<LevelDirector>
     private List<DestructableGoal> destructableGoals = new List<DestructableGoal>();
     private List<ReachableGoal> reachableGoals = new List<ReachableGoal>();
 
+    public event EventHandler<RemaingDestructables> OnDestructablesChanged;
+
+    public class RemaingDestructables : EventArgs
+    {
+        public int RemainingTargets;
+    }
+
     private enum LevelCompletionRequirement
     {
         ReachGoal = 0,
@@ -20,6 +27,7 @@ public class LevelDirector : Singleton<LevelDirector>
     public void RegisterDestructableGoal(DestructableGoal destructableGoal)
     {
         destructableGoals.Add(destructableGoal);
+        OnDestructablesChanged?.Invoke(this, new RemaingDestructables { RemainingTargets = destructableGoals.Count});
     }
 
     public void RegisterReachableGoal(ReachableGoal reachableGoal)
@@ -64,8 +72,8 @@ public class LevelDirector : Singleton<LevelDirector>
     private void OnAnyDestructableGoal(object sender, EventArgs e)
     {
         destructableGoals.Remove(sender as DestructableGoal);
-
-        if(destructableGoals.Count <= 0)
+        OnDestructablesChanged?.Invoke(this, new RemaingDestructables { RemainingTargets = destructableGoals.Count });
+        if (destructableGoals.Count <= 0)
         {
             LevelComplete.Instance.Open();
         }
@@ -81,4 +89,11 @@ public class LevelDirector : Singleton<LevelDirector>
     {
         return nextLevelName;
     }
+
+    public bool IsDestroableGoal()
+    {
+        return levelCompletionRequirement == LevelCompletionRequirement.TargetDestroyed;
+    }
+
+    public int RemainingTargets() => destructableGoals.Count;
 }
