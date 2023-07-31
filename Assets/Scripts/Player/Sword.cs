@@ -22,6 +22,7 @@ public class Sword : MonoBehaviour
     [SerializeField] private List<AudioSource> swingSounds;
     [SerializeField] private List<AudioSource> chargedSwingSounds;
     [SerializeField] private AudioSource chargingUpSound;
+    [SerializeField] private GameObject weaponVisuals;
 
     private bool attackButtonDown = false;
     private bool isAttacking = false;
@@ -45,6 +46,8 @@ public class Sword : MonoBehaviour
     {
         playerControls = new PlayerControls();
         weaponCollider.gameObject.SetActive(false);
+        chargedWeaponCollider.gameObject.SetActive(false);
+        weaponVisuals.gameObject.SetActive(false);
     }
 
     private void OnEnable()
@@ -98,6 +101,7 @@ public class Sword : MonoBehaviour
 
         if (!isAttackCharged)
         {
+            weaponVisuals.gameObject.SetActive(false);
             return;
         }
         isAttackCharged = false;
@@ -134,6 +138,7 @@ public class Sword : MonoBehaviour
     {
         chargedWeaponCollider.gameObject.SetActive(false);
         isChargeAttacking = false;
+        weaponVisuals.gameObject.SetActive(false);
     }
 
     private void ExecuteChargeAttack()
@@ -150,6 +155,7 @@ public class Sword : MonoBehaviour
 
     private void Attack()
     {
+        weaponVisuals.gameObject.SetActive(true);
         if (isAttacking || isChargeAttacking)
         {
             return;
