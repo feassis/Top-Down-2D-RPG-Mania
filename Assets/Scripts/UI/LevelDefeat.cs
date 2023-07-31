@@ -22,6 +22,7 @@ public class LevelDefeat : Singleton<LevelDefeat>
     {
         buttonSound.Play();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        AkSoundEngine.SetState("Level_Game_Complete", "None");
     }
 
     private void OnMenuButtonClicked()
