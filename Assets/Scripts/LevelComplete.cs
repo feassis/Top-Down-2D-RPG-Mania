@@ -40,7 +40,10 @@ public class LevelComplete : Singleton<LevelComplete>
         buttonSound.Play();
         Close();
         SceneManager.LoadScene(nextLevelName);
-        AkSoundEngine.SetState("Village_Combat", "Village");
+        if (nextLevelName == "Main Menu")
+            AkSoundEngine.SetState("Village_Combat", "None");
+        else
+            AkSoundEngine.SetState("Village_Combat", "Village");
     }
 
     public void Open()
