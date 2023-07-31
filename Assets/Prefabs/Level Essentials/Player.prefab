@@ -774,6 +774,7 @@ MonoBehaviour:
   - {fileID: 5936278082038650729}
   - {fileID: 5071600142817685283}
   chargingUpSound: {fileID: 5091446215492134952}
+  weaponVisuals: {fileID: 2534288946509044504}
 --- !u!82 &5091446215492134952
 AudioSource:
   m_ObjectHideFlags: 0
